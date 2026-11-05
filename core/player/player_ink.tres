@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://core/player/drawn_surface.gdshader" id="1"]
+[ext_resource type="Texture2D" uid="uid://slht8vcef7im" path="res://core/player/player_boy_basecolor.JPEG" id="2"]
+[ext_resource type="Material" path="res://core/player/ink_outline.tres" id="3"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("3")
+shader = ExtResource("1")
+shader_parameter/paper_color = Color(0.83, 0.85, 0.81, 1)
+shader_parameter/base_texture = ExtResource("2")
+shader_parameter/use_texture = true
+shader_parameter/texture_amount = 0.95
+shader_parameter/hatch_amount = 0.12
+shader_parameter/hatch_scale = 110.0
+shader_parameter/blanket_bulge = 0.0
+shader_parameter/self_light = 0.24

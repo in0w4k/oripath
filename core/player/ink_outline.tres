@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://core/player/ink_outline.gdshader" id="1"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1")
+shader_parameter/ink_color = Color(0.018, 0.022, 0.028, 1)
+shader_parameter/width_pixels = 2.0
