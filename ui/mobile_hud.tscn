@@ -1,0 +1,199 @@
+[gd_scene format=3 uid="uid://b7k4m2qax1qwe"]
+
+[ext_resource type="Script" path="res://ui/mobile_hud.gd" id="1_hud"]
+[ext_resource type="Script" path="res://ui/safe_area.gd" id="2_safe"]
+[ext_resource type="Script" path="res://ui/touch_button.gd" id="3_btn"]
+[ext_resource type="Script" path="res://ui/virtual_joystick.gd" id="4_joy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_score"]
+content_margin_left = 24.0
+content_margin_top = 10.0
+content_margin_right = 24.0
+content_margin_bottom = 10.0
+bg_color = Color(0.05, 0.05, 0.05, 0.55)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.45)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="MobileHUD" type="Control" unique_id=1901001001]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hud")
+
+[node name="SafeArea" type="MarginContainer" parent="." unique_id=1901001002]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_safe")
+
+[node name="Layout" type="Control" parent="SafeArea" unique_id=1901001003]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HealthLabel" type="Label" parent="SafeArea/Layout" unique_id=1901001004]
+layout_mode = 1
+offset_right = 280.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(0.95, 0.28, 0.25, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 56
+text = "♥ ♥ ♥"
+
+[node name="ScorePanel" type="PanelContainer" parent="SafeArea/Layout" unique_id=1901001005]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -210.0
+offset_right = 210.0
+offset_bottom = 78.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_score")
+
+[node name="ScoreLabel" type="Label" parent="SafeArea/Layout/ScorePanel" unique_id=1901001006]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 40
+text = "Ключи: 0 / 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NotificationLabel" type="Label" parent="SafeArea/Layout" unique_id=1901001007]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -460.0
+offset_top = 88.0
+offset_right = 460.0
+offset_bottom = 148.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+
+[node name="PauseButton" type="Control" parent="SafeArea/Layout" unique_id=1901001008]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 128.0
+grow_horizontal = 0
+script = ExtResource("3_btn")
+action_name = "menu"
+button_text = "II"
+font_size = 46
+is_square = true
+
+[node name="Joystick" type="Control" parent="SafeArea/Layout" unique_id=1901001009]
+custom_minimum_size = Vector2(280, 280)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -290.0
+offset_right = 290.0
+offset_bottom = -10.0
+grow_vertical = 0
+script = ExtResource("4_joy")
+
+[node name="RunButton" type="Control" parent="SafeArea/Layout" unique_id=1901001015]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -180.0
+offset_right = -240.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("3_btn")
+action_name = "run"
+button_text = "RUN"
+font_size = 36
+
+[node name="JumpButton" type="Control" parent="SafeArea/Layout" unique_id=1901001010]
+custom_minimum_size = Vector2(210, 210)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -220.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("3_btn")
+action_name = "ui_accept"
+button_text = "JUMP"
+font_size = 42
+
+[node name="DreamTools" type="HBoxContainer" parent="SafeArea/Layout" unique_id=1901001011]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -636.0
+offset_top = -150.0
+offset_right = -240.0
+offset_bottom = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 12
+
+[node name="RotateLeftBtn" type="Control" parent="SafeArea/Layout/DreamTools" unique_id=1901001012]
+custom_minimum_size = Vector2(124, 124)
+layout_mode = 2
+script = ExtResource("3_btn")
+action_name = "camera_rotate_left"
+button_text = "⟲"
+font_size = 44
+
+[node name="RotateRightBtn" type="Control" parent="SafeArea/Layout/DreamTools" unique_id=1901001013]
+custom_minimum_size = Vector2(124, 124)
+layout_mode = 2
+script = ExtResource("3_btn")
+action_name = "camera_rotate_right"
+button_text = "⟳"
+font_size = 44
+
+[node name="ResetBoxBtn" type="Control" parent="SafeArea/Layout/DreamTools" unique_id=1901001014]
+custom_minimum_size = Vector2(124, 124)
+layout_mode = 2
+script = ExtResource("3_btn")
+action_name = "reset_box"
+button_text = "↺"
+font_size = 44

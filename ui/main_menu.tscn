@@ -1,0 +1,369 @@
+[gd_scene format=3 uid="uid://dgf2r74splw3e"]
+
+[ext_resource type="Script" uid="uid://yas140enp70k" path="res://ui/main_menu.gd" id="1_ouk20"]
+[ext_resource type="Texture2D" uid="uid://cxlgxtjd16ba4" path="res://assets/menu/menu2.png" id="2_4ndjb"]
+[ext_resource type="Texture2D" uid="uid://b0wow253eo5va" path="res://assets/menu/start_button.png" id="3_ytr4m"]
+[ext_resource type="Texture2D" uid="uid://bihyg31wvbui" path="res://assets/menu/restart_button.png" id="4_l48gv"]
+[ext_resource type="Texture2D" uid="uid://b6or6wabtmmxy" path="res://assets/menu/start_button_inverted.png" id="4_w25hu"]
+[ext_resource type="Texture2D" uid="uid://bn5adi87kvf7r" path="res://assets/menu/quit_button.png" id="5_ecwwl"]
+[ext_resource type="Texture2D" uid="uid://dnyxjgwtiktfu" path="res://assets/menu/grabber.png" id="6_nrnbx"]
+[ext_resource type="Texture2D" uid="uid://bo6cu01dsfxs4" path="res://assets/menu/restart_button_inverted.png" id="6_td6mg"]
+[ext_resource type="Texture2D" uid="uid://d61kexfen2mf" path="res://assets/menu/quit_button_inverted.png" id="8_guify"]
+[ext_resource type="Texture2D" uid="uid://38hk34t0m57s" path="res://assets/menu/checked.png" id="8_h1wq0"]
+[ext_resource type="Texture2D" uid="uid://du2b4mpe1r164" path="res://assets/menu/unchecked.png" id="9_dwrpx"]
+[ext_resource type="Texture2D" uid="uid://c8yv7t82m2jl1" path="res://assets/menu/chapters1.png" id="10_3ls4m"]
+[ext_resource type="Texture2D" uid="uid://bo3lle5kfrxli" path="res://assets/menu/chapters2.png" id="11_5h80m"]
+[ext_resource type="Texture2D" uid="uid://c57bjq6f0gbm2" path="res://assets/menu/chapters3.png" id="12_w25hu"]
+[ext_resource type="Texture2D" uid="uid://b5sgh013je6jd" path="res://assets/menu/menu1.png" id="13_td6mg"]
+[ext_resource type="Texture2D" uid="uid://b1u4n5cwlfsbd" path="res://assets/menu/menu3.png" id="14_guify"]
+[ext_resource type="Texture2D" uid="uid://cs7ea6see6hmr" path="res://assets/menu/settings1.png" id="15_oil5j"]
+[ext_resource type="Texture2D" uid="uid://dpl6tn8sr2sx6" path="res://assets/menu/settings2.png" id="16_8uog0"]
+[ext_resource type="Texture2D" uid="uid://bdbil5tjjf582" path="res://assets/menu/settings3.png" id="17_k5x1w"]
+
+[sub_resource type="Animation" id="Animation_rkpqm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_4ndjb")]
+}
+
+[sub_resource type="Animation" id="Animation_7wriu"]
+resource_name = "chapters_idle"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_3ls4m"), ExtResource("11_5h80m"), ExtResource("12_w25hu"), ExtResource("11_5h80m")]
+}
+
+[sub_resource type="Animation" id="Animation_xhgcl"]
+resource_name = "menu_idle"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("13_td6mg"), ExtResource("2_4ndjb"), ExtResource("14_guify"), ExtResource("2_4ndjb")]
+}
+
+[sub_resource type="Animation" id="Animation_8tnp7"]
+resource_name = "settings_idle"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("15_oil5j"), ExtResource("16_8uog0"), ExtResource("17_k5x1w"), ExtResource("16_8uog0")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rlonj"]
+_data = {
+&"RESET": SubResource("Animation_rkpqm"),
+&"chapters_idle": SubResource("Animation_7wriu"),
+&"menu_idle": SubResource("Animation_xhgcl"),
+&"settings_idle": SubResource("Animation_8tnp7")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrnbx"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.38549265, 0.3854924, 0.38549265, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gsxbt"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 2
+border_width_right = 4
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w25hu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_td6mg"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qr7s"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Menu" type="Control" unique_id=1053517170 groups=["menu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ouk20")
+
+[node name="BackgroundFade" type="ColorRect" parent="." unique_id=1412351234]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.04, 0.04, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=960469911]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4ndjb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2105265484]
+libraries/ = SubResource("AnimationLibrary_rlonj")
+autoplay = &"menu_idle"
+
+[node name="SettingsButton" type="Button" parent="." unique_id=873751009]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -255.0
+offset_right = 55.0
+offset_bottom = -229.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="MenuButton" type="Button" parent="." unique_id=1520734298]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.0
+offset_top = -255.0
+offset_right = -125.0
+offset_bottom = -229.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="ChaptersButton" type="Button" parent="." unique_id=448133209]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 73.0
+offset_top = -255.0
+offset_right = 243.0
+offset_bottom = -229.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="MenuContent" type="VBoxContainer" parent="." unique_id=1193298211]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.5
+offset_top = -55.0
+offset_right = 89.5
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="StartButton" type="TextureButton" parent="MenuContent" unique_id=1910627157]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+texture_normal = ExtResource("3_ytr4m")
+texture_pressed = ExtResource("4_w25hu")
+texture_hover = ExtResource("4_w25hu")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="RestartButton" type="TextureButton" parent="MenuContent" unique_id=360900897]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+texture_normal = ExtResource("4_l48gv")
+texture_pressed = ExtResource("6_td6mg")
+texture_hover = ExtResource("6_td6mg")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="QuitButton" type="TextureButton" parent="MenuContent" unique_id=973812172]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+texture_normal = ExtResource("5_ecwwl")
+texture_pressed = ExtResource("8_guify")
+texture_hover = ExtResource("8_guify")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SettingsContent" type="VBoxContainer" parent="." unique_id=1552625579]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -100.0
+offset_right = 101.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelInput2" type="Label" parent="SettingsContent" unique_id=1957027845]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 24
+text = "Громкость:"
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsContent" unique_id=662843779]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("6_nrnbx")
+theme_override_icons/grabber_highlight = ExtResource("6_nrnbx")
+theme_override_styles/slider = SubResource("StyleBoxFlat_nrnbx")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gsxbt")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_gsxbt")
+
+[node name="FullscreenCheck" type="CheckBox" parent="SettingsContent" unique_id=373412352]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13319641, 0.13319641, 0.13319638, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 24
+theme_override_icons/checked = ExtResource("8_h1wq0")
+theme_override_icons/unchecked = ExtResource("9_dwrpx")
+text = "Полный экран"
+
+[node name="MusicCheck" type="CheckBox" parent="SettingsContent" unique_id=2024058718]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13319641, 0.13319641, 0.13319638, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 24
+theme_override_icons/checked = ExtResource("8_h1wq0")
+theme_override_icons/unchecked = ExtResource("9_dwrpx")
+button_pressed = true
+text = "Музыка"
+
+[node name="ChaptersContent" type="VBoxContainer" parent="." unique_id=74315745]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -160.0
+offset_right = 125.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Chapter1Button" type="Button" parent="ChaptersContent" unique_id=395496298]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_w25hu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_td6mg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1qr7s")
+text = "ГЛАВА 1"
+
+[node name="Chapter2Button" type="Button" parent="ChaptersContent" unique_id=553685793]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_w25hu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_td6mg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1qr7s")
+text = "ГЛАВА 2"
+
+[node name="Chapter3Button" type="Button" parent="ChaptersContent" unique_id=1677942659]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_w25hu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_td6mg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1qr7s")
+text = "ГЛАВА 3"
+
+[node name="Chapter4Button" type="Button" parent="ChaptersContent" unique_id=1674336660]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_w25hu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_td6mg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1qr7s")
+text = "ГЛАВА 4"
+
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="ChaptersButton" to="." method="_on_chapters_button_pressed"]
