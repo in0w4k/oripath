@@ -16,6 +16,17 @@ var is_invulnerable: bool = false
 var knockback_timer: float = 0.0
 
 func _ready() -> void:
+	var col := get_node_or_null("CollisionShape3D") as CollisionShape3D
+	if col:
+		var sph := SphereShape3D.new()
+		sph.radius = 0.4
+		col.shape = sph
+		col.position = Vector3.ZERO
+	if model_root:
+		model_root.position = Vector3(0, -0.4, 0)
+		var bm := model_root.get_node_or_null("base model") as Node3D
+		if bm:
+			bm.scale = Vector3(95, 95, 95)
 	camera_node = get_viewport().get_camera_3d()
 	var gravity = get_gravity().length()
 	JUMP_VELOCITY = sqrt(2 * gravity * jump_height)
@@ -60,8 +71,10 @@ func _physics_process(delta: float) -> void:
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		if collider is RigidBody3D:
-			var push_dir = -collision.get_normal()
-			collider.apply_central_impulse(push_dir * 0.4)
+			var normal = collision.get_normal()
+			if abs(normal.y) < 0.5:
+				var push_dir = Vector3(-normal.x, 0.0, -normal.z).normalized()
+				collider.apply_central_impulse(push_dir * 0.4)
 		
 	if raycast.is_colliding():
 		shadow.visible = true

@@ -19,11 +19,9 @@ shape = SubResource("SphereShape3D_x8nyt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
 
 [node name="base model" parent="ModelRoot" unique_id=1802019956 instance=ExtResource("2_boyfbx")]
-transform = Transform3D(175, 0, 0, 0, 175, 0, 0, 0, 175, 0, 0, 0)
+transform = Transform3D(95, 0, 0, 0, 95, 0, 0, 0, 95, 0, 0, 0)
 
-[node name="Skeleton3D" parent="ModelRoot/base model" index="0" unique_id=1843976654]
-
-[node name="tripo_node_91ed282a-f367-494c-b99d-c0d2cc8a2e35" parent="ModelRoot/base model/Skeleton3D" index="0" unique_id=561324453]
+[node name="tripo_node_91ed282a-f367-494c-b99d-c0d2cc8a2e35" parent="ModelRoot/base model/Skeleton3D" parent_id_path=PackedInt32Array(1802019956, 1081606743) index="0" unique_id=164245301]
 material_override = ExtResource("4_inkmat")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1876939079]
@@ -34,7 +32,7 @@ libraries/ = ExtResource("6_animlib")
 target_position = Vector3(0, -6, 0)
 
 [node name="Shadow" type="Sprite3D" parent="." unique_id=1939469641]
-transform = Transform3D(0.255, 0, 0, 0, -1.1146404e-08, 0.255, 0, -0.255, -1.1146404e-08, 0, 0, 0)
+transform = Transform3D(0.15, 0, 0, 0, -6.5567085e-09, 0.15, 0, -0.15, -6.5567085e-09, 0, 0, 0)
 modulate = Color(0, 0, 0, 1)
 texture = ExtResource("3_0ote5")
 
