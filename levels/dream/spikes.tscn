@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bj4xku58jw0ch"]
+
+[ext_resource type="Script" uid="uid://cmbo4klag27gb" path="res://levels/dream/spikes.gd" id="1_8fhau"]
+[ext_resource type="Texture2D" uid="uid://cyui2jql8eg1c" path="res://assets/spikes.png" id="2_ds4fp"]
+[ext_resource type="AudioStream" uid="uid://bh1hxeuwyt44k" path="res://assets/audios/damage2.mp3" id="3_8fhau"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8nyt"]
+size = Vector3(1.2, 0.5, 1.2)
+
+[node name="Spikes" type="Area3D" unique_id=1085053353]
+script = ExtResource("1_8fhau")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=265193936]
+pixel_size = 0.0006
+billboard = 2
+texture = ExtResource("2_ds4fp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=138475103]
+shape = SubResource("BoxShape3D_x8nyt")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1437792247]
+stream = ExtResource("3_8fhau")
+volume_db = -10.0
+pitch_scale = 1.5

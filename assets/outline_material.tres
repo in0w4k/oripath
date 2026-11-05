@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cpjkowwtyvqso"]
+
+[sub_resource type="Shader" id="Shader_w21r6"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded;
+
+uniform float grow : hint_range(-0.2, 0.2) = 0.03;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+
+void vertex() {
+	VERTEX += NORMAL * grow;
+}
+
+void fragment() {
+	ALBEDO = outline_color.rgb;
+}"
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_w21r6")
+shader_parameter/grow = 0.03
+shader_parameter/outline_color = Color(0, 0, 0, 1)

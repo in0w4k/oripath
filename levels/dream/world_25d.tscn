@@ -1,0 +1,323 @@
+[gd_scene format=3 uid="uid://bfudx5m7yh6d0"]
+
+[ext_resource type="Script" uid="uid://5gux5635isfv" path="res://levels/dream/world_25d.gd" id="1_kj6nb"]
+[ext_resource type="PackedScene" uid="uid://b7k4m2qax1qwe" path="res://ui/mobile_hud.tscn" id="1_mobhud"]
+[ext_resource type="PackedScene" uid="uid://dgf2r74splw3e" path="res://ui/main_menu.tscn" id="1_yl0de"]
+[ext_resource type="Shader" uid="uid://dh1a3snitwmla" path="res://assets/world/world_psx.gdshader" id="2_3f8gw"]
+[ext_resource type="PackedScene" uid="uid://cl3wipas7t16i" path="res://levels/dream/player_25d.tscn" id="2_txxj7"]
+[ext_resource type="Script" uid="uid://fv20chjsijfe" path="res://levels/dream/camera_rig.gd" id="3_javok"]
+[ext_resource type="Material" uid="uid://dgs3wq1cq4t6y" path="res://assets/world/wall_material.tres" id="4_3f8gw"]
+[ext_resource type="PackedScene" uid="uid://cd418ql01tiej" path="res://levels/dream/box.tscn" id="7_imm6h"]
+[ext_resource type="Script" uid="uid://tegiwl5owvuc" path="res://levels/dream/kill_zone.gd" id="7_jfdys"]
+[ext_resource type="PackedScene" uid="uid://bhl0if1ua7px7" path="res://levels/dream/falling_platform.tscn" id="7_p1r63"]
+[ext_resource type="PackedScene" uid="uid://cytthhn2rn4hv" path="res://levels/dream/key_part.tscn" id="8_rwtar"]
+[ext_resource type="Texture2D" uid="uid://bd0mtfihggpyq" path="res://assets/key_part_1.png" id="9_io0ht"]
+[ext_resource type="Script" uid="uid://cgw3wl737hdyy" path="res://objects/portal.gd" id="10_8fvrm"]
+[ext_resource type="Texture2D" uid="uid://cltp4fmns62py" path="res://assets/world/fault.png" id="11_p1r63"]
+[ext_resource type="AudioStream" uid="uid://crbl68ls11ki0" path="res://assets/audios/noise.wav" id="12_xudq6"]
+[ext_resource type="PackedScene" uid="uid://dnjfopgf2mv2x" path="res://levels/dream/keyhole.tscn" id="14_xudq6"]
+[ext_resource type="PackedScene" uid="uid://bj4xku58jw0ch" path="res://levels/dream/spikes.tscn" id="16_2l45m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jfdys"]
+shader = ExtResource("2_3f8gw")
+shader_parameter/enable_monochrome = false
+shader_parameter/saturation = 0.18000000855
+shader_parameter/shadow_tint = Color(0.02, 0.03, 0.04, 1)
+shader_parameter/mid_tint = Color(0.4, 0.45, 0.48, 1)
+shader_parameter/highlight_tint = Color(0.92, 0.94, 0.96, 1)
+shader_parameter/tint_balance = 0.5
+shader_parameter/contrast = 1.25
+shader_parameter/brightness = 0.0
+shader_parameter/gamma = 1.0
+shader_parameter/enable_pixelation = true
+shader_parameter/target_resolution = Vector2(854, 480)
+shader_parameter/enable_dithering = true
+shader_parameter/color_depth = 32.0
+shader_parameter/dither_intensity = 0.12
+shader_parameter/dither_scale = 2.0
+shader_parameter/dither_cutoff = 0.05
+shader_parameter/enable_scanlines = true
+shader_parameter/scanline_count = 480.0
+shader_parameter/scanline_opacity = 0.05
+shader_parameter/scanline_speed = 0.0
+shader_parameter/enable_vignette = true
+shader_parameter/vignette_intensity = 0.65
+shader_parameter/vignette_opacity = 0.6
+shader_parameter/invert_colors = false
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i17kc"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_2l45m"]
+sky_material = SubResource("ProceduralSkyMaterial_i17kc")
+
+[sub_resource type="Environment" id="Environment_jfdys"]
+background_mode = 2
+sky = SubResource("Sky_2l45m")
+ambient_light_source = 2
+ambient_light_color = Color(0.8431839, 0.8431839, 0.84318376, 1)
+ambient_light_energy = 0.1
+ssao_enabled = true
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8nyt"]
+size = Vector3(100, 2, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kj6nb"]
+size = Vector3(1.91, 3.81, 0.001)
+
+[node name="world_25d" type="Node3D" unique_id=100269441]
+script = ExtResource("1_kj6nb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=687712575]
+
+[node name="MobileHUD" parent="CanvasLayer" unique_id=1901001100 instance=ExtResource("1_mobhud")]
+show_dream_tools = true
+
+[node name="Menu" parent="CanvasLayer" unique_id=1053517170 instance=ExtResource("1_yl0de")]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1208316972]
+material = SubResource("ShaderMaterial_jfdys")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=859120089]
+environment = SubResource("Environment_jfdys")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1317701232]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player_25d" parent="." unique_id=606619403 instance=ExtResource("2_txxj7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=2072104275 node_paths=PackedStringArray("target_player")]
+script = ExtResource("3_javok")
+target_player = NodePath("../Player_25d")
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig" unique_id=695829171]
+transform = Transform3D(1, 0, 0, 0, 0.81915206, 0.57357645, 0, -0.57357645, 0.81915206, 0, 30, 45)
+projection = 1
+size = 18.0
+far = 1000.0
+
+[node name="KillZone" type="Area3D" parent="." unique_id=1003966823]
+script = ExtResource("7_jfdys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone" unique_id=2031899739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+shape = SubResource("BoxShape3D_x8nyt")
+
+[node name="Level_0" type="Node3D" parent="." unique_id=1584230586]
+
+[node name="floor" type="CSGBox3D" parent="Level_0" unique_id=901859062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(16, 1, 16)
+material = ExtResource("4_3f8gw")
+
+[node name="block" type="CSGBox3D" parent="Level_0" unique_id=107438004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1.5, -5.5)
+use_collision = true
+size = Vector3(5, 3, 5)
+material = ExtResource("4_3f8gw")
+
+[node name="block5" type="CSGBox3D" parent="Level_0" unique_id=501455556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2, -0.5)
+use_collision = true
+size = Vector3(3, 4, 5)
+material = ExtResource("4_3f8gw")
+
+[node name="block10" type="CSGBox3D" parent="Level_0" unique_id=110689879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 4, -6)
+use_collision = true
+size = Vector3(1, 10, 4)
+material = ExtResource("4_3f8gw")
+
+[node name="block18" type="CSGBox3D" parent="Level_0" unique_id=717211927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 4.5, -8.5)
+use_collision = true
+size = Vector3(5, 11, 1)
+material = ExtResource("4_3f8gw")
+
+[node name="block19" type="CSGBox3D" parent="Level_0" unique_id=1532280543]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, -8.5)
+use_collision = true
+size = Vector3(4, 10, 1)
+material = ExtResource("4_3f8gw")
+
+[node name="block15" type="CSGBox3D" parent="Level_0" unique_id=1061110579]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 3.5, -2)
+use_collision = true
+size = Vector3(1, 9, 4)
+material = ExtResource("4_3f8gw")
+
+[node name="block16" type="CSGBox3D" parent="Level_0" unique_id=1728072902]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 3, 2)
+use_collision = true
+size = Vector3(1, 8, 4)
+material = ExtResource("4_3f8gw")
+
+[node name="block17" type="CSGBox3D" parent="Level_0" unique_id=743601975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2, 6)
+use_collision = true
+size = Vector3(1, 6, 4)
+material = ExtResource("4_3f8gw")
+
+[node name="block6" type="CSGBox3D" parent="Level_0" unique_id=458588300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.5, -6)
+use_collision = true
+size = Vector3(3, 3, 4)
+material = ExtResource("4_3f8gw")
+
+[node name="block8" type="CSGBox3D" parent="Level_0" unique_id=961692946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.5, -3)
+use_collision = true
+size = Vector3(2, 3, 2)
+material = ExtResource("4_3f8gw")
+
+[node name="block21" type="CSGBox3D" parent="Level_0" unique_id=586505927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4, -3.5)
+use_collision = true
+size = Vector3(2, 2, 3)
+material = ExtResource("4_3f8gw")
+
+[node name="block9" type="CSGBox3D" parent="Level_0" unique_id=1657680255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3.5, -1)
+use_collision = true
+size = Vector3(2, 7, 2)
+material = ExtResource("4_3f8gw")
+
+[node name="block14" type="CSGBox3D" parent="Level_0" unique_id=1344354897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2, 7.5)
+use_collision = true
+size = Vector3(3, 4, 1)
+material = ExtResource("4_3f8gw")
+
+[node name="block11" type="CSGBox3D" parent="Level_0" unique_id=1502899783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 5, 1)
+use_collision = true
+size = Vector3(2, 0.5, 4)
+material = ExtResource("4_3f8gw")
+
+[node name="block12" type="CSGBox3D" parent="Level_0" unique_id=1463620372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 6.5, -5.5)
+use_collision = true
+size = Vector3(2, 0.5, 3)
+material = ExtResource("4_3f8gw")
+
+[node name="block13" type="CSGBox3D" parent="Level_0" unique_id=1048130049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 7.5, -11)
+use_collision = true
+size = Vector3(3, 0.5, 2)
+material = ExtResource("4_3f8gw")
+
+[node name="block2" type="CSGBox3D" parent="Level_0" unique_id=551303975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1, -6.5)
+use_collision = true
+size = Vector3(3, 2, 3)
+material = ExtResource("4_3f8gw")
+
+[node name="block20" type="CSGBox3D" parent="Level_0" unique_id=407019782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2.5, 6.5)
+use_collision = true
+size = Vector3(1, 5, 3)
+material = ExtResource("4_3f8gw")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Level_0" unique_id=2032147230]
+use_collision = true
+
+[node name="block7" type="CSGBox3D" parent="Level_0/CSGCombiner3D" unique_id=546973385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 4.5, 2.5)
+use_collision = true
+size = Vector3(1, 9, 5)
+material = ExtResource("4_3f8gw")
+
+[node name="block15" type="CSGBox3D" parent="Level_0/CSGCombiner3D" unique_id=1475676670]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1.3, 2.25)
+operation = 2
+use_collision = true
+size = Vector3(1, 0.8, 2.5)
+material = ExtResource("4_3f8gw")
+
+[node name="FallingPlatform" parent="Level_0" unique_id=462119033 instance=ExtResource("7_p1r63")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 5)
+
+[node name="Box" parent="." unique_id=1302927061 groups=["boxes"] instance=ExtResource("7_imm6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.49999994, -3)
+
+[node name="Box2" parent="." unique_id=1413250996 groups=["boxes"] instance=ExtResource("7_imm6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 4.5, 0.099999964)
+
+[node name="KeyPart" parent="." unique_id=2033358013 instance=ExtResource("8_rwtar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 8.7, -11)
+
+[node name="KeyPart2" parent="." unique_id=699800705 instance=ExtResource("8_rwtar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.903757, 0.79999924, 5.994875)
+key_id = 2
+texture = ExtResource("9_io0ht")
+
+[node name="Portal" type="Area3D" parent="." unique_id=170880110]
+transform = Transform3D(-3.3220655e-08, 0, -0.76, 0, 0.76, 0, 0.76, 0, -3.3220655e-08, 8.1, 3.708, 2.1999998)
+script = ExtResource("10_8fvrm")
+
+[node name="Sprite3D" type="Sprite3D" parent="Portal" unique_id=1988857656]
+transform = Transform3D(0.26000002, 0, -4.440892e-15, 0, 0.26000002, 0, 4.440892e-15, 0, 0.26000002, 0, 0, 0)
+texture = ExtResource("11_p1r63")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Portal" unique_id=1996529066]
+transform = Transform3D(1.0000007, 0, -6.750156e-14, 0, 1.0000007, 0, 6.750156e-14, 0, 1.0000007, 0, 0, 0.1)
+shape = SubResource("BoxShape3D_kj6nb")
+
+[node name="GlitchSound" type="AudioStreamPlayer" parent="Portal" unique_id=750670014]
+stream = ExtResource("12_xudq6")
+volume_db = 24.0
+pitch_scale = 1.15
+
+[node name="Keyhole" parent="." unique_id=681739144 instance=ExtResource("14_xudq6")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.991986, 0.738622, -2)
+
+[node name="Spikes" parent="." unique_id=1085053353 instance=ExtResource("16_2l45m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.1, 8.2, -11)
+
+[node name="Spikes2" parent="." unique_id=1483303782 instance=ExtResource("16_2l45m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0999994, 0.49999982, 4.2999997)
+
+[node name="Spikes3" parent="." unique_id=1202864573 instance=ExtResource("16_2l45m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.899999, 0.49999982, 4.6999993)
+
+[node name="Spikes4" parent="." unique_id=340591036 instance=ExtResource("16_2l45m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.499999, 0.49999982, 6.2)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=2037103420]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.99, 2.5, 0.5)
+modulate = Color(0, 0, 0, 1)
+text = "[Q] – ⟲"
+font_size = 128
+outline_size = 5
+
+[node name="Label3D2" type="Label3D" parent="." unique_id=1999563095]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9.01, 6, 2.1)
+modulate = Color(0, 0, 0, 1)
+text = "[E] – ⟳"
+font_size = 128
+outline_size = 5
+
+[node name="Label3D3" type="Label3D" parent="." unique_id=2092785171]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.99, 4, 3)
+modulate = Color(0, 0, 0, 1)
+text = "[R] – ↺ ■"
+font_size = 128
+outline_size = 5
+
+[connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

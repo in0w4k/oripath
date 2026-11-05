@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://cl24ddx7jrlx"]
+
+[ext_resource type="PackedScene" uid="uid://dq2mxq260cki2" path="res://assets/street_lamp_low_poly.glb" id="1_26uhx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8nyt"]
+resource_local_to_scene = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x8nyt"]
+height = 4.888672
+radius = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_26uhx"]
+height = 1.6409912
+radius = 0.07080078
+
+[sub_resource type="Animation" id="Animation_flk01"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [16.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sketchfab_Scene/CSGSphere3D:material:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.0]
+}
+
+[sub_resource type="Animation" id="Animation_flk02"]
+resource_name = "flicker"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.45, 0.5, 3.9, 4.3, 4.3500004, 4.4, 8.266666, 8.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [16.0, 16.0, 2.0, 14.0, 16.0, 16.0, 0.5, 15.0, 16.0, 16.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sketchfab_Scene/CSGSphere3D:material:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.45, 0.5, 3.9, 4.3, 4.3500004, 4.4, 8.266666, 8.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [4.0, 4.0, 0.5, 3.5, 4.0, 4.0, 0.2, 3.8, 4.0, 4.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lamp"]
+_data = {
+&"RESET": SubResource("Animation_flk01"),
+&"flicker": SubResource("Animation_flk02")
+}
+
+[node name="LampStreet" type="StaticBody3D" unique_id=1483064953]
+
+[node name="Sketchfab_Scene" parent="." unique_id=557031349 instance=ExtResource("1_26uhx")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Sketchfab_Scene" unique_id=1634082971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.92567, 573.0553, 0)
+radius = 6.0
+material = SubResource("StandardMaterial3D_x8nyt")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=943442285]
+transform = Transform3D(-2.1855694e-08, -0.8660254, 0.5, -3.7855177e-08, 0.5, 0.8660254, -1, -1.7763568e-15, -4.371139e-08, -1.29, 5.562, 0)
+light_energy = 16.0
+spot_range = 20.0
+spot_angle = 60.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=396726700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.444336, 0)
+shape = SubResource("CylinderShape3D_x8nyt")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=483122024]
+transform = Transform3D(0.55029327, -0.8349715, 0, 0.8349715, 0.55029327, 0, 0, 0, 1, -0.6597539, 5.4199424, 0)
+shape = SubResource("CylinderShape3D_26uhx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=892301142]
+libraries/ = SubResource("AnimationLibrary_lamp")

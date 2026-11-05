@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dnjfopgf2mv2x"]
+
+[ext_resource type="Texture2D" uid="uid://bthp786lhqxvc" path="res://assets/keyhole.png" id="1_hny6d"]
+[ext_resource type="Script" uid="uid://gvqpieacy676" path="res://levels/dream/keyhole.gd" id="1_sv4o1"]
+[ext_resource type="AudioStream" uid="uid://dsrek3a3ukfwf" path="res://assets/audios/lock_open.mp3" id="3_0rji6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kj6nb"]
+size = Vector3(1, 1.5, 1)
+
+[node name="Keyhole" type="Area3D" unique_id=681739144]
+script = ExtResource("1_sv4o1")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=794734630]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+layers = 33
+texture = ExtResource("1_hny6d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=503806228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004058838, 0.049999952, 0.0015869141)
+shape = SubResource("BoxShape3D_kj6nb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1690542208]
+stream = ExtResource("3_0rji6")
+volume_db = -5.0
+pitch_scale = 0.8

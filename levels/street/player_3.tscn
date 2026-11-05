@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://hjajdsvfgho2"]
+
+[ext_resource type="Script" uid="uid://d152xdyosqoa0" path="res://levels/street/player_3.gd" id="1_bshx2"]
+[ext_resource type="PackedScene" uid="uid://chkbu06a66vyv" path="res://core/player/base model.fbx" id="2_boyfbx"]
+[ext_resource type="Material" path="res://core/player/player_ink.tres" id="3_inkmat"]
+[ext_resource type="AnimationLibrary" uid="uid://cghwb6pcqq7ac" path="res://core/player/player_animations.tres" id="5_animlib"]
+[ext_resource type="Texture2D" uid="uid://rankwq5d6vps" path="res://assets/shadow.png" id="10_tu1fd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gsxbt"]
+
+[node name="player_3" type="CharacterBody3D" unique_id=1551284203 groups=["player"]]
+script = ExtResource("1_bshx2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1035462539]
+shape = SubResource("CapsuleShape3D_gsxbt")
+
+[node name="ModelRoot" type="Node3D" parent="." unique_id=1258362972]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -1, 0)
+
+[node name="base model" parent="ModelRoot" unique_id=1802019956 instance=ExtResource("2_boyfbx")]
+transform = Transform3D(170, 0, 0, 0, 170, 0, 0, 0, 170, 0, 0, 0)
+
+[node name="Skeleton3D" parent="ModelRoot/base model" index="0" unique_id=1843976654]
+
+[node name="tripo_node_91ed282a-f367-494c-b99d-c0d2cc8a2e35" parent="ModelRoot/base model/Skeleton3D" index="0" unique_id=561324453]
+material_override = ExtResource("3_inkmat")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1186134602]
+root_node = NodePath("../ModelRoot/base model")
+libraries/ = ExtResource("5_animlib")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1147789185]
+target_position = Vector3(0, -6, 0)
+
+[node name="Shadow" type="Sprite3D" parent="." unique_id=1989856025]
+transform = Transform3D(0.255, 0, 0, 0, -1.1146404e-08, 0.255, 0, -0.255, -1.1146404e-08, 0, 0, 0)
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("10_tu1fd")
+
+[editable path="ModelRoot/base model"]

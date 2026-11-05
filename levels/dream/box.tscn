@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cd418ql01tiej"]
+
+[ext_resource type="Texture2D" uid="uid://bfl4rh58bsjoj" path="res://assets/1_side_box.jpg" id="1_g2tbl"]
+[ext_resource type="Script" uid="uid://xxds4m5o4s0r" path="res://levels/dream/box.gd" id="1_oq5cr"]
+[ext_resource type="Material" uid="uid://cpjkowwtyvqso" path="res://assets/outline_material.tres" id="3_bqn3j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8nyt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gsxbt"]
+next_pass = ExtResource("3_bqn3j")
+albedo_texture = ExtResource("1_g2tbl")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 150.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_x8nyt"]
+material = SubResource("StandardMaterial3D_gsxbt")
+
+[node name="Box" type="RigidBody3D" unique_id=1302927061]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_oq5cr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=92816586]
+shape = SubResource("BoxShape3D_x8nyt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1497167619]
+mesh = SubResource("BoxMesh_x8nyt")

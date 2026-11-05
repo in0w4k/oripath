@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dgs3wq1cq4t6y"]
+
+[ext_resource type="Material" uid="uid://cpjkowwtyvqso" path="res://assets/outline_material.tres" id="1_k4bba"]
+
+[resource]
+next_pass = ExtResource("1_k4bba")
+heightmap_scale = 0.05
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+uv1_scale = Vector3(3, 3, 3)
+uv1_triplanar = true

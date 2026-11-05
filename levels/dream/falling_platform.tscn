@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bhl0if1ua7px7"]
+
+[ext_resource type="Script" uid="uid://cdlv213lyt3sp" path="res://levels/dream/falling_platform.gd" id="1_3bb5w"]
+[ext_resource type="Material" uid="uid://dgs3wq1cq4t6y" path="res://assets/world/wall_material.tres" id="2_5yqql"]
+[ext_resource type="AudioStream" uid="uid://btqg581ho2vma" path="res://assets/audios/damage.wav" id="3_ggnad"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8nyt"]
+size = Vector3(4, 0.5, 2)
+
+[node name="FallingPlatform" type="RigidBody3D" unique_id=462119033]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+freeze = true
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_3bb5w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=832029123]
+shape = SubResource("BoxShape3D_x8nyt")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=396375023]
+size = Vector3(4, 0.5, 2)
+material = ExtResource("2_5yqql")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1678417873]
+stream = ExtResource("3_ggnad")
+pitch_scale = 0.2

@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://cfao1mdlojrgp"]
+
+[ext_resource type="Texture2D" uid="uid://deu6pwyppx8wa" path="res://assets/whiteborders/white-borders-0002.png" id="2_aq2jo"]
+[ext_resource type="Texture2D" uid="uid://bii6k4i8i7128" path="res://assets/whiteborders/white-borders-0013.png" id="3_amqos"]
+[ext_resource type="Texture2D" uid="uid://b80le8qmarijt" path="res://assets/whiteborders/white-borders-0001.png" id="4_7a33h"]
+[ext_resource type="Texture2D" uid="uid://c6g41h2m0y128" path="res://assets/whiteborders/white-borders-0003.png" id="5_vhsjh"]
+[ext_resource type="Texture2D" uid="uid://cv2dhq13rg2py" path="res://assets/whiteborders/white-borders-0004.png" id="6_iq1r4"]
+[ext_resource type="Texture2D" uid="uid://bri3skvotda6n" path="res://assets/whiteborders/white-borders-0005.png" id="7_884kb"]
+[ext_resource type="Texture2D" uid="uid://cdom0f0oh2cre" path="res://assets/whiteborders/white-borders-0006.png" id="8_2gmmn"]
+[ext_resource type="Texture2D" uid="uid://bn2etp7mbge8p" path="res://assets/whiteborders/white-borders-0007.png" id="9_73rf1"]
+[ext_resource type="Texture2D" uid="uid://dr3emnc41vn7p" path="res://assets/whiteborders/white-borders-0008.png" id="10_5juin"]
+[ext_resource type="Texture2D" uid="uid://ddoyk37jbka7u" path="res://assets/whiteborders/white-borders-0009.png" id="11_1isvr"]
+[ext_resource type="Texture2D" uid="uid://ofxlnw4di027" path="res://assets/whiteborders/white-borders-0010.png" id="12_k52r2"]
+[ext_resource type="Texture2D" uid="uid://s61s65spbsyh" path="res://assets/whiteborders/white-borders-0011.png" id="13_oh3dy"]
+[ext_resource type="Texture2D" uid="uid://mdgccaonkdwe" path="res://assets/whiteborders/white-borders-0012.png" id="14_3swdq"]
+[ext_resource type="Script" uid="uid://c4lm526bo2e7a" path="res://objects/white_door.gd" id="17_doorgd"]
+
+[sub_resource type="Animation" id="Animation_cjuyv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_aq2jo")]
+}
+
+[sub_resource type="Animation" id="Animation_d5wq2"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_amqos")]
+}
+
+[sub_resource type="Animation" id="Animation_srfpq"]
+resource_name = "open"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_7a33h"), ExtResource("2_aq2jo"), ExtResource("5_vhsjh"), ExtResource("6_iq1r4"), ExtResource("7_884kb"), ExtResource("8_2gmmn"), ExtResource("9_73rf1"), ExtResource("10_5juin"), ExtResource("11_1isvr"), ExtResource("12_k52r2"), ExtResource("13_oh3dy"), ExtResource("14_3swdq"), ExtResource("3_amqos")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x6iep"]
+_data = {
+&"RESET": SubResource("Animation_cjuyv"),
+&"idle": SubResource("Animation_d5wq2"),
+&"open": SubResource("Animation_srfpq")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aq2jo"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_amqos"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7a33h"]
+animation = &"open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vhsjh"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iq1r4"]
+advance_mode = 2
+advance_condition = &"is_open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_884kb"]
+advance_mode = 2
+advance_condition = &"is_idle"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_x8nyt"]
+states/Start/position = Vector2(201, 100)
+states/closed/node = SubResource("AnimationNodeAnimation_aq2jo")
+states/closed/position = Vector2(413, 124)
+states/idle/node = SubResource("AnimationNodeAnimation_amqos")
+states/idle/position = Vector2(730, 135)
+states/open/node = SubResource("AnimationNodeAnimation_7a33h")
+states/open/position = Vector2(568, 127)
+transitions = ["Start", "closed", SubResource("AnimationNodeStateMachineTransition_vhsjh"), "closed", "open", SubResource("AnimationNodeStateMachineTransition_iq1r4"), "open", "idle", SubResource("AnimationNodeStateMachineTransition_884kb")]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8nyt"]
+size = Vector3(1.5, 3, 0.1)
+
+[node name="WhiteDoor" type="Area3D" unique_id=471998604]
+script = ExtResource("17_doorgd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=73922326]
+root_node = NodePath("../Sprite3D")
+libraries/ = SubResource("AnimationLibrary_x6iep")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=743453549]
+root_node = NodePath("../Sprite3D")
+tree_root = SubResource("AnimationNodeStateMachine_x8nyt")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/is_idle = false
+parameters/conditions/is_open = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=810208693]
+shape = SubResource("BoxShape3D_x8nyt")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1106986028]
+pixel_size = 0.0121
+texture = ExtResource("2_aq2jo")

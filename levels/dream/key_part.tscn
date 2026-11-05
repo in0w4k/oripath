@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cytthhn2rn4hv"]
+
+[ext_resource type="Script" uid="uid://flt1v7eiwikt" path="res://levels/dream/key_part.gd" id="1_lko60"]
+[ext_resource type="Texture2D" uid="uid://dct74v40vlcef" path="res://assets/key_part_2.png" id="2_gyytv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_x8nyt"]
+
+[node name="KeyPart" type="Area3D" unique_id=2033358013]
+script = ExtResource("1_lko60")
+texture = ExtResource("2_gyytv")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=740133099]
+transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
+billboard = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=618992090]
+shape = SubResource("SphereShape3D_x8nyt")

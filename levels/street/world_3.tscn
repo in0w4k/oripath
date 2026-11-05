@@ -1,0 +1,1990 @@
+[gd_scene format=3 uid="uid://dfy5c15gbfjrq"]
+
+[ext_resource type="Texture2D" uid="uid://p5jdl7ad35co" path="res://assets/road.png" id="1_xnej2"]
+[ext_resource type="Script" uid="uid://ddjel2nwa4m43" path="res://levels/street/camera_street.gd" id="2_1qr7s"]
+[ext_resource type="Material" uid="uid://cpjkowwtyvqso" path="res://assets/outline_material.tres" id="2_6c7x5"]
+[ext_resource type="PackedScene" uid="uid://hjajdsvfgho2" path="res://levels/street/player_3.tscn" id="3_1qr7s"]
+[ext_resource type="Texture2D" uid="uid://3agny7o54jkg" path="res://assets/window.png" id="3_usgg7"]
+[ext_resource type="PackedScene" uid="uid://cl24ddx7jrlx" path="res://levels/street/lamp_street.tscn" id="4_6c7x5"]
+[ext_resource type="Texture2D" uid="uid://gtckl4yp1eis" path="res://assets/door.png" id="4_w512l"]
+[ext_resource type="PackedScene" uid="uid://b00sj3gh5pei8" path="res://levels/street/car.tscn" id="7_wx14w"]
+[ext_resource type="PackedScene" uid="uid://jaefssnitr4w" path="res://levels/street/origami_crane.tscn" id="8_5fw0f"]
+[ext_resource type="PackedScene" uid="uid://cfao1mdlojrgp" path="res://objects/white_door.tscn" id="10_1ojam"]
+[ext_resource type="Script" uid="uid://4i0mn07aik63" path="res://levels/street/world_3.gd" id="11_world3gd"]
+[ext_resource type="PackedScene" uid="uid://dgf2r74splw3e" path="res://ui/main_menu.tscn" id="12_menutscn"]
+[ext_resource type="PackedScene" uid="uid://b7k4m2qax1qwe" path="res://ui/mobile_hud.tscn" id="12_mobhud"]
+[ext_resource type="Shader" uid="uid://dh1a3snitwmla" path="res://assets/world/world_psx.gdshader" id="13_psxshader"]
+
+[sub_resource type="Environment" id="Environment_5fw0f"]
+background_mode = 2
+ssao_enabled = true
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.2594196, 0.28312, 0.32103842, 1)
+volumetric_fog_albedo = Color(0.12, 0.12, 0.14, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6c7x5"]
+shader = ExtResource("13_psxshader")
+shader_parameter/enable_monochrome = false
+shader_parameter/saturation = 0.0
+shader_parameter/shadow_tint = Color(0.02, 0.03, 0.04, 1)
+shader_parameter/mid_tint = Color(0.4, 0.45, 0.48, 1)
+shader_parameter/highlight_tint = Color(0.92, 0.94, 0.96, 1)
+shader_parameter/tint_balance = 0.5
+shader_parameter/contrast = 1.25
+shader_parameter/brightness = 0.0
+shader_parameter/gamma = 1.0
+shader_parameter/enable_pixelation = true
+shader_parameter/target_resolution = Vector2(1280, 720)
+shader_parameter/enable_dithering = true
+shader_parameter/color_depth = 32.0
+shader_parameter/dither_intensity = 0.12
+shader_parameter/dither_scale = 2.0
+shader_parameter/dither_cutoff = 0.05
+shader_parameter/enable_scanlines = true
+shader_parameter/scanline_count = 720.0
+shader_parameter/scanline_opacity = 0.05
+shader_parameter/scanline_speed = 0.0
+shader_parameter/enable_vignette = true
+shader_parameter/vignette_intensity = 0.65
+shader_parameter/vignette_opacity = 0.6
+shader_parameter/invert_colors = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tu1fd"]
+albedo_texture = ExtResource("1_xnej2")
+roughness = 0.9
+uv1_scale = Vector3(1, 5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ojam"]
+next_pass = ExtResource("2_6c7x5")
+albedo_color = Color(0.41981366, 0.41981304, 0.4198128, 1)
+metallic_specular = 0.0
+normal_enabled = true
+heightmap_scale = 0.05
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+uv1_scale = Vector3(3, 3, 3)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtwtq"]
+next_pass = ExtResource("2_6c7x5")
+albedo_color = Color(0.41960785, 0.41960785, 0.41960785, 1)
+metallic_specular = 0.0
+normal_enabled = true
+heightmap_scale = 0.05
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+uv1_scale = Vector3(3, 3, 3)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wx14w"]
+next_pass = ExtResource("2_6c7x5")
+albedo_color = Color(0.69135684, 0.6913568, 0.69135684, 1)
+metallic_specular = 0.0
+normal_enabled = true
+heightmap_scale = 0.05
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+uv1_scale = Vector3(3, 3, 3)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usgg7"]
+next_pass = ExtResource("2_6c7x5")
+albedo_color = Color(0.8560673, 0.8560673, 0.85606724, 1)
+metallic_specular = 0.0
+normal_enabled = true
+heightmap_scale = 0.05
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+uv1_scale = Vector3(3, 3, 3)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6c7x5"]
+next_pass = ExtResource("2_6c7x5")
+albedo_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+metallic_specular = 0.0
+normal_enabled = true
+heightmap_scale = 0.05
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+uv1_scale = Vector3(3, 3, 3)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5fw0f"]
+next_pass = ExtResource("2_6c7x5")
+albedo_color = Color(0.7750634, 0.7750634, 0.7750634, 1)
+metallic_specular = 0.0
+normal_enabled = true
+heightmap_scale = 0.05
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+uv1_scale = Vector3(3, 3, 3)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c40tq"]
+resource_local_to_scene = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nc3lc"]
+resource_local_to_scene = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8nyt"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ue4o"]
+next_pass = ExtResource("2_6c7x5")
+albedo_color = Color(0.41981366, 0.41981304, 0.4198128, 1)
+metallic_specular = 0.0
+normal_enabled = true
+heightmap_scale = 0.05
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+uv1_scale = Vector3(3, 3, 3)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qqx5l"]
+next_pass = ExtResource("2_6c7x5")
+albedo_color = Color(0.85490197, 0.85490197, 0.85490197, 1)
+metallic_specular = 0.0
+normal_enabled = true
+heightmap_scale = 0.05
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+uv1_scale = Vector3(3, 3, 3)
+uv1_triplanar = true
+
+[node name="world_3" type="Node3D" unique_id=2114383051]
+script = ExtResource("11_world3gd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=185306270]
+environment = SubResource("Environment_5fw0f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1646723914]
+
+[node name="MobileHUD" parent="CanvasLayer" unique_id=1901001200 instance=ExtResource("12_mobhud")]
+
+[node name="Menu" parent="CanvasLayer" unique_id=1053517170 instance=ExtResource("12_menutscn")]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=76233653]
+material = SubResource("ShaderMaterial_6c7x5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Street" type="Node3D" parent="." unique_id=205149960]
+
+[node name="Road" type="CSGBox3D" parent="Street" unique_id=1203373220]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(62, 1, 8)
+material = SubResource("StandardMaterial3D_tu1fd")
+
+[node name="Sidewalk_F" type="CSGBox3D" parent="Street" unique_id=646839243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -39)
+use_collision = true
+size = Vector3(62, 1.2, 70)
+material = SubResource("StandardMaterial3D_1ojam")
+
+[node name="Sidewalk_N" type="CSGBox3D" parent="Street" unique_id=1241964681]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 6.5)
+use_collision = true
+size = Vector3(62, 1.2, 5)
+material = SubResource("StandardMaterial3D_rtwtq")
+
+[node name="Buildings" type="Node3D" parent="Street" unique_id=408692982]
+
+[node name="Building_1" type="CSGBox3D" parent="Street/Buildings" unique_id=1683176449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 7, -13)
+use_collision = true
+size = Vector3(12, 14, 12)
+material = SubResource("StandardMaterial3D_wx14w")
+
+[node name="windows" type="Node3D" parent="Street/Buildings/Building_1" unique_id=718302165]
+
+[node name="Window" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=1542191254]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4, 0, 6.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window2" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=2068028818]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 6.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window3" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=1106131305]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4, 0, 6.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window4" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=2125772008]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4, 4, 6.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window5" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=1240264672]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 4, 6.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window6" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=50401694]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4, 4, 6.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window10" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=23017282]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -6.01, 0, 3.5)
+texture = ExtResource("3_usgg7")
+
+[node name="Window11" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=943857360]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -6.01, 4, 3.5)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window12" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=2144867442]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -6.01, -4, 3.5)
+texture = ExtResource("3_usgg7")
+
+[node name="Window16" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=524401576]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -6.01, 0, 0)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window17" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=788624012]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -6.01, 4, 0)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window18" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=1161559744]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -6.01, -4, 0)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window19" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=124939295]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -6.01, 0, -3.5)
+texture = ExtResource("3_usgg7")
+
+[node name="Window20" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=1902542974]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -6.01, 4, -3.5)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window21" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=1258750420]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -6.01, -4, -3.5)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window13" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=661570693]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 6.01, 0, 3.5)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window14" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=1216501196]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 6.01, 4, 3.5)
+texture = ExtResource("3_usgg7")
+
+[node name="Window15" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=1885709167]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 6.01, -4, 3.5)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window22" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=746871652]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 6.01, 0, 0.5)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window23" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=783348749]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 6.01, 4, 0.5)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window24" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=799735679]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 6.01, -4, 0.5)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window25" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=402324556]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 6.01, 0, -3.5)
+texture = ExtResource("3_usgg7")
+
+[node name="Window26" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=1245008307]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 6.01, 4, -3.5)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window27" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=1215253706]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 6.01, -4, -3.5)
+texture = ExtResource("3_usgg7")
+
+[node name="Window7" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=750382530]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4, -4, 6.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window9" type="Sprite3D" parent="Street/Buildings/Building_1/windows" unique_id=688268853]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4, -4, 6.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Sprite3D" type="Sprite3D" parent="Street/Buildings/Building_1" unique_id=626293943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10000038, -4.8, 6.01)
+modulate = Color(0.63375676, 0.6337568, 0.63375676, 1)
+pixel_size = 0.0025
+texture = ExtResource("4_w512l")
+
+[node name="Building_2" type="CSGBox3D" parent="Street/Buildings" unique_id=1654446869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 11, -11.5)
+use_collision = true
+size = Vector3(10, 22, 9)
+material = SubResource("StandardMaterial3D_usgg7")
+
+[node name="windows" type="Node3D" parent="Street/Buildings/Building_2" unique_id=531524134]
+
+[node name="Window7" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=480777178]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, -8, 4.51)
+texture = ExtResource("3_usgg7")
+
+[node name="Window8" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=52866673]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -8, 4.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window9" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1727583836]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, -8, 4.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window10" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1174585743]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, -4, 4.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window11" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1686248403]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -4, 4.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window12" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=513746596]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, -4, 4.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window13" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1883600327]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 0, 4.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window14" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=627630672]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 4.51)
+texture = ExtResource("3_usgg7")
+
+[node name="Window15" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=208715027]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 0, 4.51)
+texture = ExtResource("3_usgg7")
+
+[node name="Window22" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1771502353]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, 0, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window23" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1800727360]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, 4, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window24" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=199059867]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, 8, 2)
+texture = ExtResource("3_usgg7")
+
+[node name="Window25" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1689801371]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, -4, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window26" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=409074679]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, -8, 2)
+texture = ExtResource("3_usgg7")
+
+[node name="Window32" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1665969556]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, 0, -2)
+texture = ExtResource("3_usgg7")
+
+[node name="Window33" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1061026814]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, 4, -2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window34" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1787513101]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, 8, -2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window35" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=299865657]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, -4, -2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window36" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=177649332]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, -8, -2)
+texture = ExtResource("3_usgg7")
+
+[node name="Window27" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1485030214]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, 0, 2)
+texture = ExtResource("3_usgg7")
+
+[node name="Window28" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=981386562]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, 4, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window29" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1681292410]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, 8, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window30" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1276576030]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, -4, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window31" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1006708785]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, -8, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window37" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=789889997]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, 0, -2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window38" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1075398902]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, 4, -2)
+texture = ExtResource("3_usgg7")
+
+[node name="Window39" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1199557789]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, 8, -2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window40" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=883653799]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, -4, -2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window41" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=812631950]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, -8, -2)
+texture = ExtResource("3_usgg7")
+
+[node name="Window16" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1241122669]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 4, 4.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window17" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=562296295]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 4, 4.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window18" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=351054991]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 4, 4.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window19" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=680454461]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 8, 4.51)
+texture = ExtResource("3_usgg7")
+
+[node name="Window20" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=1073990631]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 8, 4.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window21" type="Sprite3D" parent="Street/Buildings/Building_2/windows" unique_id=465124413]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 8, 4.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Building_3" type="CSGBox3D" parent="Street/Buildings" unique_id=1145592858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 4.5, -10.5)
+use_collision = true
+size = Vector3(13, 9, 8)
+material = SubResource("StandardMaterial3D_6c7x5")
+
+[node name="windows" type="Node3D" parent="Street/Buildings/Building_3" unique_id=862641177]
+
+[node name="Window9" type="Sprite3D" parent="Street/Buildings/Building_3/windows" unique_id=277192136]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.5, -1.5, 4.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window10" type="Sprite3D" parent="Street/Buildings/Building_3/windows" unique_id=712362479]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4.5, -1.5, 4.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window19" type="Sprite3D" parent="Street/Buildings/Building_3/windows" unique_id=1454135425]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 6.51, 1.5, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window23" type="Sprite3D" parent="Street/Buildings/Building_3/windows" unique_id=237989499]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 6.51, 1.5, -1)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window24" type="Sprite3D" parent="Street/Buildings/Building_3/windows" unique_id=611439901]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 6.51, -1.5, -1)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window20" type="Sprite3D" parent="Street/Buildings/Building_3/windows" unique_id=511594297]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 6.51, -1.5, 2)
+texture = ExtResource("3_usgg7")
+
+[node name="Window21" type="Sprite3D" parent="Street/Buildings/Building_3/windows" unique_id=74623174]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -6.51, 1.5, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window22" type="Sprite3D" parent="Street/Buildings/Building_3/windows" unique_id=1877744013]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -6.51, -1.5, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window25" type="Sprite3D" parent="Street/Buildings/Building_3/windows" unique_id=1098590013]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -6.51, 1.5, -1)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window26" type="Sprite3D" parent="Street/Buildings/Building_3/windows" unique_id=1017277901]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -6.51, -1.5, -1)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window8" type="Sprite3D" parent="Street/Buildings/Building_3/windows" unique_id=2119798469]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4.5, -1.5, 4.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window11" type="Sprite3D" parent="Street/Buildings/Building_3/windows" unique_id=1427498205]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.5, 1.5, 4.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window13" type="Sprite3D" parent="Street/Buildings/Building_3/windows" unique_id=1628783075]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4.5, 1.5, 4.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window14" type="Sprite3D" parent="Street/Buildings/Building_3/windows" unique_id=860542546]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4.5, 1.5, 4.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window15" type="Sprite3D" parent="Street/Buildings/Building_3/windows" unique_id=1726139987]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.5, 1.5, 4.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Sprite3D" type="Sprite3D" parent="Street/Buildings/Building_3" unique_id=1760878677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4000001, -2.3, 4.01)
+modulate = Color(0.63375676, 0.6337568, 0.63375676, 1)
+pixel_size = 0.0025
+texture = ExtResource("4_w512l")
+
+[node name="Building_4" type="CSGBox3D" parent="Street/Buildings" unique_id=1561827782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 7.5, -11.5)
+use_collision = true
+size = Vector3(10, 15, 10)
+material = SubResource("StandardMaterial3D_5fw0f")
+
+[node name="windows" type="Node3D" parent="Street/Buildings/Building_4" unique_id=951592488]
+
+[node name="Window10" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=34947752]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -1.5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window11" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=137041474]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, -1.5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window12" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=661059769]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, -1.5, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window13" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=879524779]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -4.5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window14" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=1119688365]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, -4.5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window15" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=845313712]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, -4.5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window16" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=121776973]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 4.5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window17" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=767409527]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 4.5, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window18" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=532825261]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 4.5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window19" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=1517089985]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window20" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=1921387160]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 1.5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window22" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=774118666]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, 1.5, 3.0100002)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window34" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=1145992355]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, 1.5, 3.0100002)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window35" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=943566811]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, 1.5, 0.010000229)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window36" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=1462285015]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, 1.5, -2.9899998)
+texture = ExtResource("3_usgg7")
+
+[node name="Window37" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=487605513]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, 4.5, 3.0100002)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window38" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=826416466]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, 4.5, 0.010000229)
+texture = ExtResource("3_usgg7")
+
+[node name="Window39" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=85304233]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, 4.5, -2.9899998)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window40" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=1772756589]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, -1.5, 3.0100002)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window41" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=2100224291]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, -1.5, 0.010000229)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window42" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=38698816]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, -1.5, -2.9899998)
+modulate = Color(0.31431612, 0.31431612, 0.3143161, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window43" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=717236484]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, -4.5, 3.0100002)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window44" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=358289952]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, -4.5, 0.010000229)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window45" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=3258077]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.01, -4.5, -2.9899998)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window23" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=1701402342]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, 1.5, 0.010000229)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window24" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=1341996140]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, 1.5, -2.9899998)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window25" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=1696628260]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, 4.5, 3.0100002)
+texture = ExtResource("3_usgg7")
+
+[node name="Window26" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=1789800847]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, 4.5, 0.010000229)
+texture = ExtResource("3_usgg7")
+
+[node name="Window27" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=1156121010]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, 4.5, -2.9899998)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window28" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=1920237790]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, -1.5, 3.0100002)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window29" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=2110335001]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, -1.5, 0.010000229)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window30" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=61713680]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, -1.5, -2.9899998)
+texture = ExtResource("3_usgg7")
+
+[node name="Window31" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=790289170]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, -4.5, 3.0100002)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window32" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=1605760494]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, -4.5, 0.010000229)
+texture = ExtResource("3_usgg7")
+
+[node name="Window33" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=1390108893]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.01, -4.5, -2.9899998)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window21" type="Sprite3D" parent="Street/Buildings/Building_4/windows" unique_id=1906536327]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 1.5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="LampStreet" parent="Street" unique_id=1483064953 instance=ExtResource("4_6c7x5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -5.2000003)
+
+[node name="LampStreet5" parent="Street" unique_id=474370821 instance=ExtResource("4_6c7x5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 20, 0, -5.2000003)
+
+[node name="CSGSphere3D" parent="Street/LampStreet5/Sketchfab_Scene" parent_id_path=PackedInt32Array(474370821, 557031349) index="1" unique_id=1634082971]
+material = SubResource("StandardMaterial3D_c40tq")
+
+[node name="AnimationPlayer" parent="Street/LampStreet5" index="4" unique_id=892301142]
+autoplay = &"flicker"
+speed_scale = 1.2
+
+[node name="LampStreet3" parent="Street" unique_id=345042121 instance=ExtResource("4_6c7x5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -20, 0, -5.2000003)
+
+[node name="LampStreet2" parent="Street" unique_id=1018425359 instance=ExtResource("4_6c7x5")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -10, 0, 4.7999997)
+
+[node name="CSGSphere3D" parent="Street/LampStreet2/Sketchfab_Scene" parent_id_path=PackedInt32Array(1018425359, 557031349) index="1" unique_id=1634082971]
+material = SubResource("StandardMaterial3D_nc3lc")
+
+[node name="AnimationPlayer" parent="Street/LampStreet2" index="4" unique_id=892301142]
+autoplay = &"flicker"
+
+[node name="LampStreet6" parent="Street" unique_id=125178229 instance=ExtResource("4_6c7x5")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 10, 0, 4.7999997)
+
+[node name="LampStreet7" parent="Street" unique_id=233056106 instance=ExtResource("4_6c7x5")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 30, 0, 4.7999997)
+
+[node name="LampStreet4" parent="Street" unique_id=882677757 instance=ExtResource("4_6c7x5")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -30, 0, 4.7999997)
+
+[node name="Buildings_Background" type="Node3D" parent="Street" unique_id=1475645498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Street/Buildings_Background" unique_id=482941478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 17.5, -31)
+size = Vector3(16, 35, 10)
+
+[node name="Window37" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1262587836]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -1, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window38" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=939999077]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, -1, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window39" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=299567696]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, -1, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window40" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=2143219665]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, -1, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window41" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1679988088]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, -1, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window62" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=712076029]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window63" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1415132111]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, -5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window64" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1827919521]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, -5, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window65" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1870309803]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, -5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window66" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1241556101]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, -5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window67" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1178677888]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -9, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window68" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1941326748]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, -9, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window69" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1049388831]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, -9, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window70" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=216377824]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, -9, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window71" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=977493108]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, -9, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window72" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1002019763]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -13, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window73" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=661693100]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, -13, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window74" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=913598180]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, -13, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window75" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1557285526]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, -13, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window76" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1860749433]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, -13, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window42" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1673793316]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 3, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window43" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1393700678]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 3, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window44" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1933998411]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, 3, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window45" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=126385240]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 3, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window46" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1469839087]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, 3, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window47" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=946545944]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 7, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window48" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=280722049]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 7, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window49" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=858031996]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, 7, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window50" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1177432092]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 7, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window51" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=187361921]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, 7, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window52" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1528426256]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 11, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window53" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1956980186]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 11, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window54" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=439323283]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, 11, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window55" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=835288358]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 11, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window56" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1527907989]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, 11, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window57" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1123373530]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 15, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window58" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1589556683]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 15, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window59" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=1533441839]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, 15, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window60" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=896320308]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 15, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window61" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D" unique_id=990124495]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, 15, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Street/Buildings_Background" unique_id=292983906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, 21.5, -35)
+size = Vector3(21, 43, 10)
+
+[node name="Window61" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=1909355204]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window62" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=851471651]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4, 0, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window63" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=663455506]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8, 0, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window64" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=34619969]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4, 0, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window65" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=1525951354]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8, 0, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window66" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=1964219916]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window67" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=474464579]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4, 5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window68" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=1076708866]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8, 5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window69" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=565702037]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4, 5, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window70" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=393500911]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8, 5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window71" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=2145003155]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 10, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window72" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=1004694639]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4, 10, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window73" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=421328946]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8, 10, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window74" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=1975459715]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4, 10, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window75" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=1245017796]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8, 10, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window76" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=890803981]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 15, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window77" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=685189445]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4, 15, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window78" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=2051002737]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8, 15, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window79" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=183694006]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4, 15, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window80" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=224355433]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8, 15, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window81" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=1964397914]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 19, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window82" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=802644897]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4, 19, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window83" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=1393380186]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8, 19, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window84" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=1712499248]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4, 19, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window85" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=2063172511]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8, 19, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window86" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=370851177]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window87" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=2014224611]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4, -5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window88" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=1949360483]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8, -5, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window89" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=286158417]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4, -5, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window90" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=1149572704]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8, -5, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window91" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=28838230]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -10, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window92" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=86022292]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4, -10, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window93" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=268167367]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8, -10, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window94" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=876602145]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4, -10, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window95" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=1947503060]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8, -10, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window96" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=1834586744]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -15, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window97" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=686104675]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4, -15, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window98" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=739002155]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8, -15, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window99" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=1254253775]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4, -15, 5.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window100" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D4" unique_id=1648947796]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8, -15, 5.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Street/Buildings_Background" unique_id=325462989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 19.5, -29.5)
+size = Vector3(24, 39, 15)
+
+[node name="Window6" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1935421074]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -9, 4, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window7" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=811653051]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, 4, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window8" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=42733456]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 4, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window9" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1692147608]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 4, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window10" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=265666275]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 4, 7.51)
+texture = ExtResource("3_usgg7")
+
+[node name="Window11" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=90985453]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, 4, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window12" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1751552457]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 9, 4, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window13" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=515944261]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -9, 8, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window14" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=2086830185]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, 8, 7.51)
+texture = ExtResource("3_usgg7")
+
+[node name="Window15" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=614253383]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 8, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window16" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1714471707]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 8, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window17" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=885202171]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 8, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window18" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1819395694]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, 8, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window19" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1366196377]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 9, 8, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window20" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=745569842]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -9, 12, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window21" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=979741875]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, 12, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window22" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1772200314]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 12, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window23" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1969499737]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 12, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window24" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=168797057]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 12, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window25" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=78765510]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, 12, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window26" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=895513951]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 9, 12, 7.51)
+texture = ExtResource("3_usgg7")
+
+[node name="Window27" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=555445702]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -9, 16, 7.51)
+texture = ExtResource("3_usgg7")
+
+[node name="Window28" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=378860046]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, 16, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window29" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1173174163]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 16, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window30" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1851106603]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 16, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window31" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1316990336]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 16, 7.51)
+texture = ExtResource("3_usgg7")
+
+[node name="Window32" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1999505639]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, 16, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window33" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1715859439]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 9, 16, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window55" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=936015146]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 16, 5)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window56" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=2000772185]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 16, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window57" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=843185406]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 16, -1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window58" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=83157181]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 16, -4)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window59" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1302448423]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 12, 5)
+texture = ExtResource("3_usgg7")
+
+[node name="Window60" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=450747810]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 12, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window61" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1247866169]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 12, -1)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window62" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=76537814]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 12, -4)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window63" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1393106697]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 8, 5)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window64" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=683666232]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 8, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window65" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=56719798]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 8, -1)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window66" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=101425379]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 8, -4)
+texture = ExtResource("3_usgg7")
+
+[node name="Window67" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1805519986]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 4, 5)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window68" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=447918758]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 4, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window69" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=158972886]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 4, -1)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window70" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=523757521]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 4, -4)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window71" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=534719187]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 0, 5)
+texture = ExtResource("3_usgg7")
+
+[node name="Window72" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1862234664]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 0, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window73" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1451258243]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 0, -1)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window74" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=750056186]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, 0, -4)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window75" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=887222237]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, -4, 5)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window76" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=673236959]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, -4, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window77" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=4544437]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, -4, -1)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window78" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=416557306]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, -4, -4)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window79" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1842984394]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, -8, 5)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window80" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=419930613]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, -8, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window81" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=230861736]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, -8, -1)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window89" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=282335511]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, -12, 5)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window90" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1728871001]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, -12, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window91" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=966306946]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, -12, -1)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window92" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=737394144]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, -16, 5)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window93" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1096206613]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, -16, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window94" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=506245241]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, -16, -1)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window82" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=2110344577]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 12.1, -8, -4)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window34" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=690633975]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -9, 0, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window35" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=120896168]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, 0, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window36" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1590523002]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 0, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window37" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=2057851169]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window38" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=411084255]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 0, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window39" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=554812560]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, 0, 7.51)
+texture = ExtResource("3_usgg7")
+
+[node name="Window40" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=54857546]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 9, 0, 7.51)
+texture = ExtResource("3_usgg7")
+
+[node name="Window41" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1379698201]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -9, -4, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window42" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=947830501]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, -4, 7.51)
+texture = ExtResource("3_usgg7")
+
+[node name="Window43" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1968978584]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, -4, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window44" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1263913601]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -4, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window45" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1458006187]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, -4, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window46" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1649375906]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, -4, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window47" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=2038311274]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 9, -4, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window48" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1683745108]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -9, -8, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window49" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1084329080]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, -8, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window50" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=227974869]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, -8, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window51" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=661500013]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -8, 7.51)
+texture = ExtResource("3_usgg7")
+
+[node name="Window52" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1471937152]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, -8, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window53" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1533432660]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, -8, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window54" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=457110077]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 9, -8, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window83" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1184148050]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, -13, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window84" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=647335426]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, -13, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window85" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=949082334]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 9, -13, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window86" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1353046676]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, -13, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window87" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1791301843]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, -13, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window88" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D2" unique_id=1946030704]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -13, 7.51)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Street/Buildings_Background" unique_id=2027170969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 14.5, -35)
+size = Vector3(16, 29, 16)
+
+[node name="Window19" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1157716835]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window20" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=298656122]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 0, 8.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window21" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1890720673]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 0, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window22" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1019548398]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, 0, 8.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window23" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=968221150]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, 0, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window39" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1067727297]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -4, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window40" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=871748841]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, -4, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window41" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=339765826]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, -4, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window42" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1356698865]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, -4, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window43" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=225837428]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, -4, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window44" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1089149191]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -8, 8.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window45" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1313596698]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, -8, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window46" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=501932009]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, -8, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window47" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1802734512]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, -8, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window48" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=931821644]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, -8, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window24" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1526906776]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 4, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window25" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1494580036]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 4, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window26" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=62238848]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 4, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window27" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=2132976679]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, 4, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window28" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=770292610]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, 4, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window29" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=840825035]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 8, 8.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window30" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=629672685]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 8, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window31" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1535033102]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 8, 8.01)
+texture = ExtResource("3_usgg7")
+
+[node name="Window32" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=217979929]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, 8, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window33" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1954955937]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, 8, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window34" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1276199010]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 12, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window35" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=575340490]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3, 12, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window36" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=446829165]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 12, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window37" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1790468991]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6, 12, 8.01)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window49" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=552697427]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, 12, 6)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window50" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=253486807]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, 12, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window51" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=515123697]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, 12, -2)
+texture = ExtResource("3_usgg7")
+
+[node name="Window52" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1200733292]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, 12, -6)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window53" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=375549342]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, 8, 6)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window54" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=167026073]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, 8, 2)
+texture = ExtResource("3_usgg7")
+
+[node name="Window55" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=177099438]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, 8, -2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window56" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1704609911]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, 8, -6)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window57" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=2137737361]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, 4, 6)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window58" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1139831373]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, 4, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window59" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1632217772]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, 4, -2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window60" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=767500366]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, 4, -6)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window61" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=685817450]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, 0, 6)
+texture = ExtResource("3_usgg7")
+
+[node name="Window62" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1913074223]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, 0, 2)
+texture = ExtResource("3_usgg7")
+
+[node name="Window63" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1743655599]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, 0, -2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window64" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=747654315]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, 0, -6)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window65" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=734486964]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, -4, 6)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window66" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=2145822288]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, -4, 2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window67" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1147784524]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, -4, -2)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window68" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=1225664150]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 8.01, -4, -6)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 1)
+texture = ExtResource("3_usgg7")
+
+[node name="Window38" type="Sprite3D" parent="Street/Buildings_Background/CSGBox3D3" unique_id=946382025]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6, 12, 8.01)
+texture = ExtResource("3_usgg7")
+
+[node name="BlackWall_L" type="CSGBox3D" parent="Street" unique_id=2070566952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5, 4, -6.5999994)
+use_collision = true
+size = Vector3(1, 8, 31)
+material = SubResource("StandardMaterial3D_x8nyt")
+
+[node name="BlackWall_R" type="CSGBox3D" parent="Street" unique_id=1773321296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 4, -6.5999994)
+use_collision = true
+size = Vector3(1, 8, 31)
+material = SubResource("StandardMaterial3D_x8nyt")
+
+[node name="FrontBarrier" type="CSGBox3D" parent="Street" unique_id=199999901]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 8.8)
+visible = false
+use_collision = true
+size = Vector3(64, 6, 0.5)
+
+[node name="FrontBarrier2" type="CSGBox3D" parent="Street" unique_id=1236543598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -19.2)
+visible = false
+use_collision = true
+size = Vector3(64, 6, 0.5)
+
+[node name="FrontBarrier3" type="CSGBox3D" parent="Street" unique_id=437276811]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 26.7, 2, -17.7)
+visible = false
+use_collision = true
+size = Vector3(2.4, 6, 0.5)
+
+[node name="FrontBarrier4" type="CSGBox3D" parent="Street" unique_id=1395399943]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 17.300001, 2, -17.7)
+visible = false
+use_collision = true
+size = Vector3(2.4, 6, 0.5)
+
+[node name="FrontBarrier5" type="CSGBox3D" parent="Street" unique_id=1178152421]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 13.700001, 2, -16.650002)
+visible = false
+use_collision = true
+size = Vector3(4.5, 6, 0.5)
+
+[node name="FrontBarrier6" type="CSGBox3D" parent="Street" unique_id=569234792]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9.699999, 2, -17.45)
+visible = false
+use_collision = true
+size = Vector3(2.9, 6, 0.5)
+
+[node name="Canopy_2" type="CSGBox3D" parent="Street" unique_id=199999903]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 4.1499996, -6)
+use_collision = true
+size = Vector3(2.3, 0.2, 1)
+material = SubResource("StandardMaterial3D_5ue4o")
+
+[node name="Canopy_4" type="CSGBox3D" parent="Street" unique_id=443371291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2.0499995, -6.2999997)
+use_collision = true
+size = Vector3(1.5, 0.2, 0.4)
+material = SubResource("StandardMaterial3D_qqx5l")
+
+[node name="Canopy_3" type="CSGBox3D" parent="Street" unique_id=249623972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1, 4.1499996, -6.5)
+use_collision = true
+size = Vector3(2.3, 0.2, 1)
+material = SubResource("StandardMaterial3D_1ojam")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=187476717]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 4.2, 8.5)
+script = ExtResource("2_1qr7s")
+
+[node name="player_3" parent="." unique_id=1551284203 instance=ExtResource("3_1qr7s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -5.5)
+
+[node name="Car1" parent="." unique_id=940632687 instance=ExtResource("7_wx14w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, 1.8)
+
+[node name="Car2" parent="." unique_id=940632688 instance=ExtResource("7_wx14w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -1.8)
+speed = 13.0
+direction = -1.0
+
+[node name="OrigamiCrane1" parent="." unique_id=692914828 instance=ExtResource("8_5fw0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.8, 0.8000001, -11.6)
+
+[node name="OrigamiCrane2" parent="." unique_id=692914829 instance=ExtResource("8_5fw0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4.6, -5.9)
+crane_id = 2
+
+[node name="OrigamiCrane3" parent="." unique_id=692914830 instance=ExtResource("8_5fw0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.8000001, 5)
+crane_id = 3
+
+[node name="WhiteDoor" parent="." unique_id=471998604 instance=ExtResource("10_1ojam")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 30.99, 1.8424561, -5)
+visible = false
+
+[editable path="Street/LampStreet5"]
+[editable path="Street/LampStreet2"]

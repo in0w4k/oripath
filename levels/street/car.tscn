@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://b00sj3gh5pei8"]
+
+[ext_resource type="Texture2D" uid="uid://cutc0kun1r780" path="res://assets/car1.png" id="1_7822p"]
+[ext_resource type="Script" uid="uid://bp6gocthun6in" path="res://levels/street/car.gd" id="2_cargd"]
+[ext_resource type="AudioStream" uid="uid://d32p3nitc8jhc" path="res://assets/audios/engine.wav" id="3_06lh1"]
+[ext_resource type="AudioStream" uid="uid://c0bescbdrikc0" path="res://assets/audios/impact.wav" id="4_td361"]
+
+[sub_resource type="Animation" id="Animation_uoj53"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.106, 1.65, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k61xc"]
+resource_name = "patrol"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.106, 1.65, 0), Vector3(-0.106, 1.68, 0), Vector3(-0.106, 1.64, 0), Vector3(-0.106, 1.67, 0), Vector3(-0.106, 1.65, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_06lh1"]
+_data = {
+&"RESET": SubResource("Animation_uoj53"),
+&"patrol": SubResource("Animation_k61xc")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8nyt"]
+size = Vector3(6.4, 2, 2)
+
+[node name="car" type="Area3D" unique_id=940632687]
+script = ExtResource("2_cargd")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=534859693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.106, 1.65, 0)
+pixel_size = 0.0025
+texture = ExtResource("1_7822p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=415105092]
+libraries/ = SubResource("AnimationLibrary_06lh1")
+autoplay = &"patrol"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1246713762]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_x8nyt")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1646798149]
+stream = ExtResource("3_06lh1")
+autoplay = true
+max_distance = 35.0
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=2045849241]
+stream = ExtResource("4_td361")
+volume_db = -15.0
