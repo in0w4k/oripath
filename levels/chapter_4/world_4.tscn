@@ -1,0 +1,163 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://levels/chapter_4/world_4.gd" id="1_world_script"]
+[ext_resource type="Material" path="res://assets/floor.tres" id="2_floor_mat"]
+[ext_resource type="Material" path="res://assets/world/wall_material.tres" id="3_wall_mat"]
+[ext_resource type="PackedScene" path="res://objects/white_door.tscn" id="4_white_door"]
+[ext_resource type="PackedScene" path="res://levels/chapter_4/player_4.tscn" id="5_player_scene"]
+[ext_resource type="Script" path="res://levels/chapter_4/spawner.gd" id="6_spawner_script"]
+[ext_resource type="Resource" path="res://data/levels/level_01.tres" id="7_default_level"]
+[ext_resource type="AudioStream" path="res://assets/audios/noise.wav" id="8_noise_sfx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w4"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_w4"]
+sky_material = SubResource("ProceduralSkyMaterial_w4")
+
+[sub_resource type="Environment" id="Environment_w4"]
+background_mode = 2
+sky = SubResource("Sky_w4")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_exit"]
+size = Vector3(2.2, 3.0, 2.2)
+
+[node name="World4" type="Node3D"]
+script = ExtResource("1_world_script")
+fallback_level_data = ExtResource("7_default_level")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Room" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+use_collision = true
+size = Vector3(30, 0.5, 30)
+material = ExtResource("2_floor_mat")
+
+[node name="Ceiling" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 0)
+use_collision = true
+size = Vector3(30, 0.5, 30)
+material = ExtResource("3_wall_mat")
+
+[node name="WallNorth" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -15)
+use_collision = true
+size = Vector3(30, 4, 0.5)
+material = ExtResource("3_wall_mat")
+
+[node name="WallSouth" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 15)
+use_collision = true
+size = Vector3(30, 4, 0.5)
+material = ExtResource("3_wall_mat")
+
+[node name="WallEast" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2, 0)
+use_collision = true
+size = Vector3(0.5, 4, 30)
+material = ExtResource("3_wall_mat")
+
+[node name="WallWest" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2, 0)
+use_collision = true
+size = Vector3(0.5, 4, 30)
+material = ExtResource("3_wall_mat")
+
+[node name="PillarNW" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2, -5.5)
+use_collision = true
+size = Vector3(2.2, 4, 2.2)
+material = ExtResource("3_wall_mat")
+
+[node name="PillarNE" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2, -5.5)
+use_collision = true
+size = Vector3(2.2, 4, 2.2)
+material = ExtResource("3_wall_mat")
+
+[node name="PillarSW" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2, 5.5)
+use_collision = true
+size = Vector3(2.2, 4, 2.2)
+material = ExtResource("3_wall_mat")
+
+[node name="PillarSE" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2, 5.5)
+use_collision = true
+size = Vector3(2.2, 4, 2.2)
+material = ExtResource("3_wall_mat")
+
+[node name="Lights" type="Node3D" parent="Room"]
+
+[node name="OmniLight1" type="OmniLight3D" parent="Room/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3.8, -8)
+light_energy = 2.0
+omni_range = 15.0
+
+[node name="OmniLight2" type="OmniLight3D" parent="Room/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.8, -8)
+light_energy = 2.0
+omni_range = 15.0
+
+[node name="OmniLight3" type="OmniLight3D" parent="Room/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3.8, 8)
+light_energy = 2.0
+omni_range = 15.0
+
+[node name="OmniLight4" type="OmniLight3D" parent="Room/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.8, 8)
+light_energy = 2.0
+omni_range = 15.0
+
+[node name="OmniLightCenter" type="OmniLight3D" parent="Room/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8, 0)
+light_energy = 3.0
+omni_range = 18.0
+
+[node name="WhiteDoor" parent="." instance=ExtResource("4_white_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -14.65)
+
+[node name="ExitArea" type="Area3D" parent="WhiteDoor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteDoor/ExitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.6)
+shape = SubResource("BoxShape3D_exit")
+
+[node name="DoorHint" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.55, -14.65)
+modulate = Color(1, 1, 1, 1)
+text = "ВЫХОД
+↓"
+font_size = 60
+outline_size = 8
+
+[node name="Player4" parent="." instance=ExtResource("5_player_scene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="InitialEnemies" type="Node3D" parent="."]
+
+[node name="InitialPickups" type="Node3D" parent="."]
+
+[node name="Spawner" type="Node3D" parent="."]
+script = ExtResource("6_spawner_script")
+
+[node name="Timer" type="Timer" parent="Spawner"]
+
+[node name="SurvivalTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_noise_sfx")
+volume_db = -15.0
+pitch_scale = 0.31
+autoplay = true

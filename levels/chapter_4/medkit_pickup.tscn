@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://levels/chapter_4/medkit_pickup.gd" id="1_medkit_script"]
+[ext_resource type="Texture2D" path="res://assets/chapter_4/medkit.png" id="2_medkit_tex"]
+[ext_resource type="Resource" path="res://data/items/medkit_stats.tres" id="3_medkit_stats"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_medkit"]
+radius = 0.4
+
+[node name="MedkitPickup" type="Area3D"]
+script = ExtResource("1_medkit_script")
+stats = ExtResource("3_medkit_stats")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("SphereShape3D_medkit")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+pixel_size = 0.0012
+billboard = 2
+texture = ExtResource("2_medkit_tex")

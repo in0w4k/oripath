@@ -1,0 +1,464 @@
+[gd_scene load_steps=37 format=3]
+
+[ext_resource type="Script" path="res://levels/chapter_4/player_4.gd" id="1_pxk84"]
+[ext_resource type="Script" path="res://levels/chapter_4/weapon.gd" id="2_6pqel"]
+[ext_resource type="Script" path="res://levels/chapter_4/health.gd" id="2_7ab3r"]
+[ext_resource type="Texture2D" path="res://assets/chapter_4/weapon_idle.png" id="3_eyfjp"]
+[ext_resource type="Shader" path="res://assets/world/world_psx.gdshader" id="3_hggq8"]
+[ext_resource type="PackedScene" path="res://levels/chapter_4/bullet.tscn" id="3_oc6r6"]
+[ext_resource type="AudioStream" path="res://assets/chapter_4/shoot_1.wav" id="4_5vc56"]
+[ext_resource type="AudioStream" path="res://assets/chapter_4/reload.wav" id="4_863n4"]
+[ext_resource type="Texture2D" path="res://assets/chapter_4/crosshair_1.png" id="4_gr8pw"]
+[ext_resource type="Texture2D" path="res://assets/chapter_4/weapon_aim_idle.png" id="4_vpnw8"]
+[ext_resource type="Texture2D" path="res://assets/chapter_4/crosshair_2.png" id="4_wlunf"]
+[ext_resource type="Script" path="res://levels/chapter_4/virtual_joystick.gd" id="5_7tqvw"]
+[ext_resource type="AudioStream" path="res://assets/chapter_4/shoot_2.wav" id="5_ahjti"]
+[ext_resource type="Texture2D" path="res://assets/chapter_4/weapon_reload_1.png" id="5_hggq8"]
+[ext_resource type="AudioStream" path="res://assets/chapter_4/shoot_3.wav" id="6_bespu"]
+[ext_resource type="PackedScene" path="res://ui/main_menu.tscn" id="6_fepdy"]
+[ext_resource type="StyleBox" path="res://ui/new_style_box_flat.tres" id="6_qvcm0"]
+[ext_resource type="Texture2D" path="res://assets/chapter_4/weapon_reload_2.png" id="6_wlunf"]
+[ext_resource type="AudioStream" path="res://assets/chapter_4/shoot_4.wav" id="7_fepdy"]
+[ext_resource type="Texture2D" path="res://assets/chapter_4/weapon_shoot.png" id="7_gr8pw"]
+[ext_resource type="Script" path="res://levels/chapter_4/mobile_button.gd" id="7_vpu3e"]
+[ext_resource type="AudioStream" path="res://assets/chapter_4/shoot_5.wav" id="8_q0n1t"]
+[ext_resource type="Script" path="res://levels/chapter_4/hud.gd" id="11_v2lu2"]
+[ext_resource type="AudioStream" path="res://assets/chapter_4/damage2.wav" id="20_bespu"]
+[ext_resource type="AudioStream" path="res://assets/audios/coin_sound.mp3" id="21_fepdy"]
+[ext_resource type="Resource" path="res://data/player/player_stats.tres" id="22_player_stats"]
+[ext_resource type="Resource" path="res://data/items/weapon_stats.tres" id="23_weapon_stats"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnv4p"]
+bg_color = Color(0, 0, 0, 0.7764706)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8nyt"]
+bg_color = Color(0, 0, 0, 0.34901962)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aysos"]
+bg_color = Color(0, 0, 0, 0.7764706)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wlunf"]
+shader = ExtResource("3_hggq8")
+shader_parameter/enable_monochrome = false
+shader_parameter/saturation = 0.0
+shader_parameter/shadow_tint = Color(0.02, 0.03, 0.04, 1)
+shader_parameter/mid_tint = Color(0.4, 0.45, 0.48, 1)
+shader_parameter/highlight_tint = Color(0.92, 0.94, 0.96, 1)
+shader_parameter/tint_balance = 0.5
+shader_parameter/contrast = 1.25
+shader_parameter/brightness = 0.0
+shader_parameter/gamma = 1.0
+shader_parameter/enable_pixelation = true
+shader_parameter/target_resolution = Vector2(1280, 720)
+shader_parameter/enable_dithering = true
+shader_parameter/color_depth = 32.0
+shader_parameter/dither_intensity = 0.12
+shader_parameter/dither_scale = 2.0
+shader_parameter/dither_cutoff = 0.05
+shader_parameter/enable_scanlines = true
+shader_parameter/scanline_count = 720.0
+shader_parameter/scanline_opacity = 0.05
+shader_parameter/scanline_speed = 0.0
+shader_parameter/enable_vignette = true
+shader_parameter/vignette_intensity = 0.65
+shader_parameter/vignette_opacity = 0.6
+shader_parameter/invert_colors = false
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x8nyt"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="Animation" id="Animation_gxkvw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/WeaponSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_eyfjp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/WeaponSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Crosshair:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6pqel"]
+resource_name = "aim_idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/WeaponSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_vpnw8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Crosshair:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_wlunf")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Crosshair:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_v2lu2"]
+resource_name = "aim_shoot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/WeaponSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 20), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oc6r6"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/WeaponSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_eyfjp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Crosshair:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_gr8pw")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Crosshair:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_863n4"]
+resource_name = "reload"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/WeaponSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_hggq8"), ExtResource("6_wlunf"), ExtResource("3_eyfjp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Crosshair:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f2unk"]
+resource_name = "shoot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/WeaponSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("7_gr8pw"), ExtResource("3_eyfjp")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n72wt"]
+_data = {
+&"RESET": SubResource("Animation_gxkvw"),
+&"aim_idle": SubResource("Animation_6pqel"),
+&"aim_shoot": SubResource("Animation_v2lu2"),
+&"idle": SubResource("Animation_oc6r6"),
+&"reload": SubResource("Animation_863n4"),
+&"shoot": SubResource("Animation_f2unk")
+}
+
+[node name="Player4" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_pxk84")
+stats = ExtResource("22_player_stats")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("11_v2lu2")
+
+[node name="WeaponSprite" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_eyfjp")
+expand_mode = 1
+
+[node name="Ammo" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -97.0
+offset_right = -40.0
+offset_bottom = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
+text = "8 / 16"
+
+[node name="Crosshair" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_wlunf")
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer"]
+offset_left = 30.0
+offset_top = 25.0
+offset_right = 200.0
+offset_bottom = 75.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 36
+text = "♥ ♥ ♥"
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.0
+offset_top = 16.0
+offset_right = 36.0
+offset_bottom = 66.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 36
+text = "1:00"
+
+[node name="VirtualJoystick" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -260.0
+offset_right = 260.0
+offset_bottom = -60.0
+grow_vertical = 0
+script = ExtResource("5_7tqvw")
+
+[node name="JumpButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -250.0
+offset_right = -190.0
+offset_bottom = -140.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_styles/normal = ExtResource("6_qvcm0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wnv4p")
+theme_override_styles/hover = ExtResource("6_qvcm0")
+text = "JUMP"
+script = ExtResource("7_vpu3e")
+
+[node name="FireButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -380.0
+offset_right = -60.0
+offset_bottom = -270.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_x8nyt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_aysos")
+theme_override_styles/hover = ExtResource("6_qvcm0")
+text = "FIRE"
+script = ExtResource("7_vpu3e")
+action_name = "fire"
+
+[node name="Menu" parent="CanvasLayer" instance=ExtResource("6_fepdy")]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_wlunf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_x8nyt")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9999985, -0.0017453284, 0, 0.0017453284, 0.9999985, 0, 0.65, 0)
+
+[node name="MuzzleHip" type="Marker3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0.15, -0.1, -0.6)
+
+[node name="MuzzleAim" type="Marker3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -100)
+collide_with_areas = true
+
+[node name="Weapon" type="Node" parent="." node_paths=PackedStringArray("player", "camera", "anim_player", "sprite", "muzzle_hip", "muzzle_aim", "aim_ray", "sound")]
+script = ExtResource("2_6pqel")
+stats = ExtResource("23_weapon_stats")
+bullet_scene = ExtResource("3_oc6r6")
+shot_sounds = Array[AudioStream]([ExtResource("4_5vc56"), ExtResource("5_ahjti"), ExtResource("6_bespu"), ExtResource("7_fepdy"), ExtResource("8_q0n1t")])
+reload_sound = ExtResource("4_863n4")
+player = NodePath("..")
+camera = NodePath("../Camera3D")
+anim_player = NodePath("../AnimationPlayer")
+sprite = NodePath("../CanvasLayer/WeaponSprite")
+muzzle_hip = NodePath("../Camera3D/MuzzleHip")
+muzzle_aim = NodePath("../Camera3D/MuzzleAim")
+aim_ray = NodePath("../Camera3D/RayCast3D")
+sound = NodePath("../ShootSound")
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_fepdy")
+volume_db = -5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_n72wt")
+}
+
+[node name="Health" type="Node3D" parent="."]
+script = ExtResource("2_7ab3r")
+stats = ExtResource("22_player_stats")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="Health"]
+stream = ExtResource("20_bespu")
+volume_db = -5.0
+pitch_scale = 0.9
+
+[node name="HealSound" type="AudioStreamPlayer" parent="Health"]
+stream = ExtResource("21_fepdy")
+volume_db = -5.0
+pitch_scale = 0.4
+
+[connection signal="ammo_changed" from="Weapon" to="CanvasLayer" method="_on_weapon_ammo_changed"]
+[connection signal="health_changed" from="Health" to="CanvasLayer" method="_on_health_changed"]

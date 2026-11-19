@@ -1,0 +1,45 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://levels/chapter_4/orderly_enemy.gd" id="1_orderly_script"]
+[ext_resource type="Texture2D" path="res://assets/chapter_4/orderly_1.png" id="2_tex_normal"]
+[ext_resource type="Texture2D" path="res://assets/chapter_4/orderly_2.png" id="3_tex_inflated"]
+[ext_resource type="Texture2D" path="res://assets/chapter_4/orderly_3.png" id="4_tex_boom"]
+[ext_resource type="AudioStream" path="res://assets/chapter_4/preboom.wav" id="5_preboom_sfx"]
+[ext_resource type="AudioStream" path="res://assets/chapter_4/boom.wav" id="6_boom_sfx"]
+[ext_resource type="AudioStream" path="res://assets/audios/impact.wav" id="7_stun_sfx"]
+[ext_resource type="Resource" path="res://data/enemies/orderly_stats.tres" id="8_orderly_stats"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_orderly"]
+radius = 0.45
+height = 1.9
+
+[node name="OrderlyEnemy" type="Area3D"]
+script = ExtResource("1_orderly_script")
+stats = ExtResource("8_orderly_stats")
+tex_normal = ExtResource("2_tex_normal")
+tex_inflated = ExtResource("3_tex_inflated")
+tex_boom = ExtResource("4_tex_boom")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+shape = SubResource("CapsuleShape3D_orderly")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+pixel_size = 0.0027
+billboard = 2
+alpha_cut = 1
+texture = ExtResource("2_tex_normal")
+
+[node name="PreBoomSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_preboom_sfx")
+volume_db = -6.0
+
+[node name="BoomSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_boom_sfx")
+volume_db = -5.0
+pitch_scale = 1.15
+
+[node name="StunSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_stun_sfx")
+volume_db = -7.0

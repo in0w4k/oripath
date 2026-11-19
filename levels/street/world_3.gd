@@ -12,6 +12,8 @@ var collected_cranes: int = 0
 
 func _ready() -> void:
 	GameManager.reset_health()
+	if not target_scene:
+		target_scene = load("res://levels/chapter_4/world_4.tscn")
 	if not mobile_hud:
 		mobile_hud = find_child("MobileHUD", true, false)
 	_update_hud()

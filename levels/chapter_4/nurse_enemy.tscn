@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://levels/chapter_4/nurse_enemy.gd" id="1_nurse_script"]
+[ext_resource type="Texture2D" path="res://assets/chapter_4/nurse.png" id="2_nurse_tex"]
+[ext_resource type="AudioStream" path="res://assets/audios/impact.wav" id="3_windup_sfx"]
+[ext_resource type="AudioStream" path="res://assets/audios/damage2.mp3" id="4_strike_sfx"]
+[ext_resource type="Resource" path="res://data/enemies/nurse_stats.tres" id="5_nurse_stats"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nurse"]
+radius = 0.45
+height = 1.8
+
+[node name="NurseEnemy" type="Area3D"]
+script = ExtResource("1_nurse_script")
+stats = ExtResource("5_nurse_stats")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_nurse")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+pixel_size = 0.0025
+billboard = 2
+alpha_cut = 1
+texture = ExtResource("2_nurse_tex")
+
+[node name="WindUpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_windup_sfx")
+volume_db = -6.0
+pitch_scale = 1.6
+
+[node name="StrikeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_strike_sfx")
+volume_db = -3.0
+pitch_scale = 1.35

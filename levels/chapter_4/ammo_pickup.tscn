@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://levels/chapter_4/ammo_pickup.gd" id="1_ammo_script"]
+[ext_resource type="Resource" path="res://data/items/ammo_pickup_stats.tres" id="2_ammo_stats"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ammo"]
+radius = 0.4
+
+[node name="AmmoPickup" type="Area3D"]
+script = ExtResource("1_ammo_script")
+stats = ExtResource("2_ammo_stats")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("SphereShape3D_ammo")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+pixel_size = 0.003
+billboard = 2
+text = "ПАТРОНЫ"

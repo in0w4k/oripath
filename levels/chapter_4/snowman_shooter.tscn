@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://levels/chapter_4/snowman_shooter.gd" id="1_snowman_script"]
+[ext_resource type="PackedScene" path="res://levels/chapter_4/snowball_projectile.tscn" id="2_snowball_scene"]
+[ext_resource type="Texture2D" path="res://assets/chapter_4/snowman.png" id="3_snowman_normal"]
+[ext_resource type="Texture2D" path="res://assets/chapter_4/snowman_aim.png" id="4_snowman_aim"]
+[ext_resource type="AudioStream" path="res://assets/chapter_4/shoot_4.wav" id="5_throw_sfx"]
+[ext_resource type="Resource" path="res://data/enemies/snowman_stats.tres" id="6_snowman_stats"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_snowman"]
+radius = 0.45
+height = 1.8
+
+[node name="SnowmanShooter" type="Area3D"]
+script = ExtResource("1_snowman_script")
+stats = ExtResource("6_snowman_stats")
+projectile_scene = ExtResource("2_snowball_scene")
+tex_normal = ExtResource("3_snowman_normal")
+tex_aim = ExtResource("4_snowman_aim")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_snowman")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+pixel_size = 0.0048
+billboard = 2
+alpha_cut = 1
+texture = ExtResource("3_snowman_normal")
+
+[node name="ThrowSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_throw_sfx")
+volume_db = -6.0
+pitch_scale = 0.75
