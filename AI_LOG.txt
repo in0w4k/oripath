@@ -1,0 +1,19 @@
+AI_LOG.txt — Week 11 (Content and Data)
+
+Used AI chat to ask Godot 4 questions and fix bugs while moving game balance into Resource assets and adding JSON saves.
+
+1. ScriptableObject equivalent in Godot 4
+Me: How do I move enemy, player, weapon and level balance numbers out of GDScript into data files like ScriptableObjects in Unity?
+AI answer: Create custom Resource scripts with class_name (EnemyStats, PlayerStats, WeaponStats, PickupStats, WaveData, LevelData) and save .tres assets in res://data/. Keep runtime hp inside the enemy node, never subtract from stats.max_health.
+
+2. Loading 3 levels in one scene
+Me: How can world_4.tscn build 3 different levels without duplicating the scene?
+AI answer: Store level_id, time_limit, goal_type (Survive / Eliminate), initial enemies, spawn points, waves and lighting scale inside level_01.tres, level_02.tres and level_03.tres. GameManager keeps selected_level_id, and world_4.gd spawns enemies and configures Spawner from that LevelData.
+
+3. Safe JSON save and broken file handling
+Me: How do I save progress and settings to user://save.json so a cut-off file doesn't crash the game on mobile?
+AI answer: Serialize a Dictionary via JSON.stringify, write to user://save.tmp first and swap to user://save.json. On load, check FileAccess.file_exists and JSON.parse error, log push_warning and return default SaveData. Also save inside _notification on NOTIFICATION_APPLICATION_PAUSED and NOTIFICATION_APPLICATION_FOCUS_OUT.
+
+4. Reset progress bug with UI sliders
+Me: When I delete save.json and reset settings UI, the volume slider signal triggers save_settings() and recreates save.json right away.
+AI answer: Use set_value_no_signal() and set_pressed_no_signal() when updating sliders and checkboxes after reset_all_progress(), and clear both user://save.json and SaveData in RAM.

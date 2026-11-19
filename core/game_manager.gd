@@ -10,17 +10,18 @@ signal all_keys_collected
 signal show_notification(text: String)
 signal health_changed(current_hp: int, max_hp: int)
 signal device_profile_changed(profile_idx: int)
+signal save_changed
 @warning_ignore("unused_signal")
 signal camera_shake(intensity: float, duration: float)
 
 var device_profile: int = 0
 
-@export var win_score = 20
-@export var time_limit = 30.0
+@export var win_score: int = 20
+@export var time_limit: float = 30.0
 
 var score: int = 0
-var time_left = 30.0
-var player_name = "Игрок"
+var time_left: float = 30.0
+var player_name: String = "Игрок"
 var music_volume: float = 1.0
 var is_fullscreen: bool = false
 var is_music_on: bool = true
@@ -34,6 +35,16 @@ var max_health: int = 3
 var current_health: int = 3
 
 var collected_keys: Array[int] = []
+
+var save_data: SaveData = SaveData.new()
+var level_catalog: Array[LevelData] = []
+var selected_level_id: int = 1
+
+const LEVEL_PATHS: Array[String] = [
+	"res://data/levels/level_01.tres",
+	"res://data/levels/level_02.tres",
+	"res://data/levels/level_03.tres"
+]
 
 const death_messages: Array[String] = [
 	"Ещё раз?",
@@ -50,16 +61,80 @@ const death_messages: Array[String] = [
 	"Never gonna give you up"
 ]
 
-const save_path_settings = "user://settings.cfg"
-
 @onready var audio_coin: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	time_left = time_limit
-	player_name_changed.emit(player_name)
-	load_settings()
+	_load_level_catalog()
+	load_progress()
 	$Music.finished.connect(func(): $Music.play())
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_APPLICATION_PAUSED or what == NOTIFICATION_APPLICATION_FOCUS_OUT or what == NOTIFICATION_WM_CLOSE_REQUEST:
+		save_progress()
+
+func _load_level_catalog() -> void:
+	level_catalog.clear()
+	for path in LEVEL_PATHS:
+		var res := load(path)
+		if res is LevelData:
+			level_catalog.append(res as LevelData)
+
+func get_level_data_by_id(level_id: int) -> LevelData:
+	for lvl in level_catalog:
+		if lvl.level_id == level_id:
+			return lvl
+	if not level_catalog.is_empty():
+		return level_catalog[0]
+	return null
+
+func get_current_level_data() -> LevelData:
+	return get_level_data_by_id(selected_level_id)
+
+func get_highest_unlocked_level() -> int:
+	var highest := 1
+	if save_data:
+		for id in save_data.unlocked_levels:
+			if id > highest:
+				highest = id
+	return clampi(highest, 1, maxi(1, level_catalog.size()))
+
+func load_progress() -> void:
+	save_data = SaveSystem.load_save()
+	player_name = save_data.player_name
+	music_volume = save_data.music_volume
+	is_fullscreen = save_data.is_fullscreen
+	is_music_on = save_data.is_music_on
+	apply_loaded_settings()
+	save_changed.emit()
+
+func save_progress() -> void:
+	if not save_data:
+		save_data = SaveData.new()
+	save_data.player_name = player_name
+	save_data.music_volume = music_volume
+	save_data.is_fullscreen = is_fullscreen
+	save_data.is_music_on = is_music_on
+	SaveSystem.save(save_data)
+
+func complete_arena_level(level_id: int, run_score: int) -> void:
+	if not save_data:
+		save_data = SaveData.new()
+	save_data.record_level_complete(level_id, run_score, maxi(3, level_catalog.size()))
+	save_progress()
+	save_changed.emit()
+
+func reset_all_progress() -> void:
+	SaveSystem.delete_save()
+	save_data = SaveData.new()
+	player_name = save_data.player_name
+	music_volume = save_data.music_volume
+	is_fullscreen = save_data.is_fullscreen
+	is_music_on = save_data.is_music_on
+	selected_level_id = 1
+	apply_loaded_settings()
+	save_changed.emit()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
@@ -72,7 +147,7 @@ func _input(event: InputEvent) -> void:
 
 func set_device_profile(idx: int) -> void:
 	device_profile = idx
-	if not OS.has_feature("mobile"):
+	if not OS.has_feature("mobile") and DisplayServer.get_name() != "headless":
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		match idx:
 			0:
@@ -107,7 +182,8 @@ func add_score(value: int) -> void:
 		return
 	score += value
 	score_changed.emit(score)
-	audio_coin.play()
+	if audio_coin:
+		audio_coin.play()
 	if score >= win_score:
 		win()
 
@@ -123,39 +199,30 @@ func lose() -> void:
 	is_game_over = true
 	game_lost.emit()
 	Engine.time_scale = 0.3
-	var session = current_session_id
+	var session := current_session_id
 	await get_tree().create_timer(3.0, true, false, true).timeout
 	if session == current_session_id:
 		restart_game()
 
 func save_settings() -> void:
-	var config = ConfigFile.new()
-	config.set_value("settings", "player_name", player_name)
-	config.set_value("settings", "music_volume", music_volume)
-	config.set_value("settings", "is_fullscreen", is_fullscreen)
-	config.set_value("settings", "is_music_on", is_music_on)
-	config.save(save_path_settings)
+	save_progress()
 
 func load_settings() -> void:
-	var config = ConfigFile.new()
-	if FileAccess.file_exists(save_path_settings):
-		config.load(save_path_settings)
-		player_name = config.get_value("settings", "player_name", "Player")
-		music_volume = clampf(config.get_value("settings", "music_volume", 1.0), 0.0, 1.0)
-		is_fullscreen = config.get_value("settings", "is_fullscreen", false)
-		is_music_on = config.get_value("settings", "is_music_on", true)
+	load_progress()
 
-		apply_loaded_settings()
-	
 func apply_loaded_settings() -> void:
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(music_volume))
-	$Music.stream_paused = not is_music_on
-	if is_fullscreen:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
-	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	var bus_idx := AudioServer.get_bus_index("Master")
+	if bus_idx >= 0:
+		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(maxf(music_volume, 0.0001)))
+	if has_node("Music"):
+		$Music.stream_paused = not is_music_on
+	if not OS.has_feature("mobile") and DisplayServer.get_name() != "headless":
+		if is_fullscreen:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	player_name_changed.emit(player_name)
-		
+
 func start_timer() -> void:
 	time_left = time_limit
 	timer_active = true
@@ -166,12 +233,9 @@ func stop_timer() -> void:
 func collect_key(key_id: int) -> void:
 	if not collected_keys.has(key_id):
 		collected_keys.append(key_id)
-
 		if audio_coin:
 			audio_coin.play()
-
 		key_collected.emit(key_id, collected_keys.size())
-		
 		if collected_keys.size() == 1:
 			show_notification.emit("Собрана часть ключа... (1/2)")
 		if collected_keys.size() >= 2:
@@ -189,11 +253,10 @@ func take_damage(amount: int = 1) -> void:
 	if current_health <= 0:
 		current_health = 0
 	health_changed.emit(current_health, max_health)
-
 	if current_health <= 0:
 		trigger_death()
-		
-func reset_health():
+
+func reset_health() -> void:
 	current_health = max_health
 	health_changed.emit(current_health, max_health)
 
@@ -205,20 +268,20 @@ func trigger_death() -> void:
 		return
 	is_game_over = true
 
-	var current_scene = get_tree().current_scene
-	var hud = current_scene.find_child("MobileHUD", true, false) if current_scene else null
+	var current_scene := get_tree().current_scene
+	var hud := current_scene.find_child("MobileHUD", true, false) if current_scene else null
 	if hud:
 		if "force_hidden" in hud:
 			hud.force_hidden = true
 		hud.hide()
-	var canvas = current_scene.find_child("CanvasLayer", true, false) if current_scene else null
-	var crt = canvas.get_node_or_null("ColorRect") if canvas else null
+	var canvas := current_scene.find_child("CanvasLayer", true, false) if current_scene else null
+	var crt := canvas.get_node_or_null("ColorRect") if canvas else null
 
-	var bg = ColorRect.new()
+	var bg := ColorRect.new()
 	bg.color = Color.BLACK
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 
-	var label = Label.new()
+	var label := Label.new()
 	label.text = get_death_message()
 	label.set_anchors_preset(Control.PRESET_FULL_RECT)
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -233,15 +296,18 @@ func trigger_death() -> void:
 		if crt:
 			canvas.move_child(bg, crt.get_index())
 	else:
-		get_tree().root.add_child(bg) 
+		get_tree().root.add_child(bg)
 
-	var session = current_session_id
+	var session := current_session_id
 	await get_tree().create_timer(1.1, true, false, true).timeout
-	
 	if session == current_session_id:
 		restart_game()
 	if is_instance_valid(bg):
 		bg.queue_free()
+
+func load_arena_level(level_id: int) -> void:
+	selected_level_id = clampi(level_id, 1, maxi(1, level_catalog.size()))
+	load_chapter(load("res://levels/chapter_4/world_4.tscn"))
 
 func load_chapter(scene: PackedScene) -> void:
 	current_session_id += 1
@@ -254,16 +320,14 @@ func load_chapter(scene: PackedScene) -> void:
 	reset_keys()
 	reset_health()
 	get_tree().paused = false
-	
-	if is_music_on:
+	if has_node("Music") and is_music_on:
 		$Music.stream_paused = false
 		if not $Music.playing:
 			$Music.play()
-			
 	get_tree().change_scene_to_packed(scene)
-	
+
 func start_new_game() -> void:
-	load_chapter(load("res://levels/dream/world_25d.tscn"))
+	load_arena_level(get_highest_unlocked_level())
 
 func return_to_main_menu() -> void:
 	current_session_id += 1
@@ -276,7 +340,7 @@ func return_to_main_menu() -> void:
 	reset_keys()
 	reset_health()
 	get_tree().paused = false
-	if is_music_on:
+	if has_node("Music") and is_music_on:
 		$Music.stream_paused = false
 		if not $Music.playing:
 			$Music.play()
