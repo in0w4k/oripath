@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/enemy_stats.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+enemy_name = "Snowman"
+max_health = 2
+damage = 1
+score_value = 125
+patrol_speed = 2.8
+waypoint_reach_dist = 0.9
+arena_limit = 13.5
+body_radius = 0.65
+sight_range = 20.0
+cooldown_time = 1.1
+min_preferred_dist = 5.5
+max_preferred_dist = 13.5
+reposition_speed = 3.5
+retreat_speed = 4.2
+aim_wind_up = 0.5
+aim_track_ratio = 0.82
+projectile_speed = 16.0
+projectile_hit_radius = 0.85
+projectile_lifetime = 4.0

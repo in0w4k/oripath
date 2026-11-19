@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://data/level_data.gd" id="1_level"]
+[ext_resource type="Script" path="res://data/wave_data.gd" id="2_wave"]
+[ext_resource type="PackedScene" path="res://levels/chapter_4/nurse_enemy.tscn" id="3_nurse"]
+[ext_resource type="PackedScene" path="res://levels/chapter_4/orderly_enemy.tscn" id="4_orderly"]
+[ext_resource type="PackedScene" path="res://levels/chapter_4/snowman_shooter.tscn" id="5_snowman"]
+[ext_resource type="PackedScene" path="res://levels/chapter_4/medkit_pickup.tscn" id="6_medkit"]
+[ext_resource type="PackedScene" path="res://levels/chapter_4/ammo_pickup.tscn" id="7_ammo"]
+
+[sub_resource type="Resource" id="WaveData_1"]
+script = ExtResource("2_wave")
+start_time = 0.0
+spawn_interval = 4.2
+max_active_enemies = 3
+nurse_cap = 2
+orderly_cap = 1
+snowman_cap = 1
+
+[sub_resource type="Resource" id="WaveData_2"]
+script = ExtResource("2_wave")
+start_time = 16.0
+spawn_interval = 3.4
+max_active_enemies = 4
+nurse_cap = 2
+orderly_cap = 1
+snowman_cap = 2
+
+[resource]
+script = ExtResource("1_level")
+level_id = 1
+level_title = "УРОВЕНЬ 1 · ПАЛАТА"
+goal_type = 0
+goal_kills = 0
+time_limit = 35.0
+completion_bonus = 300
+light_energy_scale = 1.0
+enemy_scenes = Array[PackedScene]([ExtResource("3_nurse"), ExtResource("4_orderly"), ExtResource("5_snowman")])
+pickup_scenes = Array[PackedScene]([ExtResource("6_medkit"), ExtResource("7_ammo")])
+initial_enemy_scenes = Array[PackedScene]([ExtResource("3_nurse"), ExtResource("5_snowman")])
+initial_enemy_positions = Array[Vector3]([Vector3(-8.5, 0, -3.5), Vector3(6.5, 0, -9.5)])
+initial_pickup_scenes = Array[PackedScene]([ExtResource("7_ammo"), ExtResource("6_medkit")])
+initial_pickup_positions = Array[Vector3]([Vector3(-9.5, 0, 0), Vector3(9.5, 0, 0)])
+enemy_spawn_points = Array[Vector3]([Vector3(-11, 0, -11), Vector3(11, 0, -11), Vector3(-11, 0, 11), Vector3(11, 0, 11), Vector3(-11, 0, 0), Vector3(11, 0, 0), Vector3(0, 0, 11), Vector3(-7.5, 0, -11), Vector3(7.5, 0, -11)])
+pickup_spawn_points = Array[Vector3]([Vector3(-9.5, 0, 0), Vector3(9.5, 0, 0), Vector3(0, 0, -8.5), Vector3(0, 0, 8.5), Vector3(-8.5, 0, -8.5), Vector3(8.5, 0, 8.5)])
+waves = Array[ExtResource("2_wave")]([SubResource("WaveData_1"), SubResource("WaveData_2")])
+pickup_interval = 8.0
+max_active_pickups = 3
+min_enemy_player_dist = 8.5
+min_pickup_player_dist = 4.5
+min_entity_spacing = 2.8
+telegraph_duration = 0.85

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/weapon_stats.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+max_ammo = 8
+reserve_ammo = 16
+fire_rate = 0.25
+hip_spread = 3.0
+aim_fov = 50.0
+normal_fov = 75.0
+sway_speed = 9.0
+sway_amount = Vector2(10, 7)
+bullet_speed = 25.0
+bullet_damage = 1
+bullet_lifetime = 2.2
+shot_words = Array[String](["ПИУ!", "ПАУ!", "БЭМ!", "ПИФ!", "ПАФ!"])

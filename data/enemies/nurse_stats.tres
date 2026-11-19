@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/enemy_stats.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+enemy_name = "Nurse"
+max_health = 2
+damage = 1
+score_value = 100
+patrol_speed = 2.8
+waypoint_reach_dist = 0.9
+arena_limit = 13.5
+body_radius = 0.65
+sight_range = 18.0
+chase_speed = 4.8
+lunge_speed = 3.2
+sight_fov_deg = 130.0
+close_sense_range = 5.0
+lose_sight_time = 4.0
+attack_range = 2.4
+attack_hit_range = 3.0
+wind_up_time = 0.42
+cooldown_time = 0.85
